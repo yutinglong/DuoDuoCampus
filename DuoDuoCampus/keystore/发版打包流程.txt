@@ -1,0 +1,38 @@
+1、确保所有开发者已将最新、正确的代码提交到主干上
+
+3、关闭Log, AndroidManifest.xml中logger和saveLogger改为false
+（注：请在开发中一律使用LogUtil来打印日志，如果嵌入了外部代码，请确保外部代码中的Log已关闭）
+
+4、根据需要更改AndroidManifest.xml中saveCrash，true会捕获全局crash，false不捕获
+
+5、AndroidManifest.xml中 VersionCode加1，VersionName修改
+
+
+
+
+
+5、确保APP中用到的Urls是线上地址，见Urls类
+
+6、关闭Manifest中的debuggable
+
+7、代码混淆
+
+8、去掉batsdk统计，包括jar包，manifest中的注册，BaseActivity和BaseFragmentActivity的onStart和onStop方法
+
+9、去掉baidu debug工具
+
+10、check MotuSDK是否最新
+
+11、确保已经加入盗版验证且可用
+
+12、Initializer中添加了isDebugMode方法，发版前需要修改为false
+
+13、检查跟频率相关的参数，例如推送拉取，或者广告拉取之类的
+
+14、打好版本Tag
+
+15、strings_conf 的devolop_debug字段改为false
+
+16、检查Urls.java文件中，用于lbs服务的两个key是否是线上的key
+
+17、build.properties文件内的app_version字段修改为对应的版本号
