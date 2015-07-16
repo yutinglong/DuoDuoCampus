@@ -7,6 +7,8 @@
 
 5、AndroidManifest.xml中 VersionCode加1，VersionName修改
 
+6、如果是手动打包，请更改assets文件夹下channel文件的渠道号
+
 
 
 

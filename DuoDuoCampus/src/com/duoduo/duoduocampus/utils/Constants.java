@@ -1,5 +1,6 @@
 package com.duoduo.duoduocampus.utils;
 
+import android.os.Environment;
 
 /**
  * @description: 
@@ -12,6 +13,12 @@ package com.duoduo.duoduocampus.utils;
 public class Constants {
     public static final String UTF8 = "utf-8";
     
+	public final static String SDCARD_DIR = Environment.getExternalStorageDirectory().getPath() + "/duoduo/";
+	public final static String PHOTO_DIR = Environment.getExternalStorageDirectory().getPath() + "/duoduo_photo/";
+	public final static String SOUND_DIR = SDCARD_DIR + "sound/";
+    
+	// 默认的渠道号
+	public static final String DEFAULT_CHANNEL = "10000";
     /**
      * Log的存储位置
      */

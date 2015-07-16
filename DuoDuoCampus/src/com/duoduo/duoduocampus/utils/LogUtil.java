@@ -47,6 +47,10 @@ public class LogUtil {
 
 	private LogUtil() {
 	}
+	
+	public static boolean isDebug() {
+		return ISDEBUG;
+	}
 
 	public static void d(String msg) {
 		if (ISDEBUG) {

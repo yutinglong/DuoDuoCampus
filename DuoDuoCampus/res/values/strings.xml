@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">多多校园</string>
+    <string name="network_error_hint">"网络不给力，麻烦检查一下"</string>
+    <string name="network_error">"网络异常"</string>
+    <string name="serverbusy">系统繁忙,请稍候再试</string>
 </resources>

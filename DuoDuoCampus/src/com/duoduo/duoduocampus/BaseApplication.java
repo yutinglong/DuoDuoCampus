@@ -11,14 +11,17 @@ import android.net.NetworkInfo;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.duoduo.duoduocampus.system.status.CrashHandler;
 import com.duoduo.duoduocampus.system.status.ExternalStorageReceiver;
 import com.duoduo.duoduocampus.system.status.NetStatusReceiver;
+import com.duoduo.duoduocampus.utils.ChannelUtil;
 import com.duoduo.duoduocampus.utils.Constants;
 import com.duoduo.duoduocampus.utils.LogUtil;
+import com.duoduo.duoduocampus.utils.MobileUtil;
 
 /**
  * @description: 项目的Application
@@ -31,7 +34,13 @@ import com.duoduo.duoduocampus.utils.LogUtil;
 public class BaseApplication extends Application {
     private static BaseApplication instance = null;
     private Handler handler = new Handler();
-
+    
+	public static String imei = "";
+	public static String mac = "";
+	private static String version_name = "0.0.0";
+	
+	private static String channel_id;// 渠道ID
+	
     public BaseApplication() {
         super();
         instance = this;
@@ -52,6 +61,9 @@ public class BaseApplication extends Application {
         	CrashHandler mCrashHandler = CrashHandler.getInstance();
         	Thread.setDefaultUncaughtExceptionHandler(mCrashHandler);
         }
+        
+        imei = MobileUtil.getDeviceId();
+		mac = MobileUtil.getMacAddress();
         
         LogUtil.d(LogUtil.YTL_TAG, "Log存储的位置为: " + Constants.LOG_PATH);
     }
@@ -112,6 +124,30 @@ public class BaseApplication extends Application {
         this.registerReceiver(storageReceiver, filterStorage);
     }
 
+    public static String getChannelID() {
+		if (TextUtils.isEmpty(channel_id)) {
+			channel_id = ChannelUtil.getChannel(instance, Constants.DEFAULT_CHANNEL);
+		}
+		return channel_id;
+	}
+    
+	public static String getVersionName() {
+		if (TextUtils.isEmpty(version_name))
+			version_name = ChannelUtil.getVersionName(instance);
+		return version_name;
+	}
+    
+	/**
+	 * 自定义UserAgent（网络请求 特定web页面【https的】需要带上）
+	 * @return
+	 */
+	public static String getUserAgent() {
+		String userAgent = "duoduo android "
+				+ BaseApplication.getChannelID() + " "
+				+ BaseApplication.getVersionName();
+		return userAgent;
+	}
+    
     /**
      * 隐藏虚拟键盘
      * 
@@ -134,12 +170,11 @@ public class BaseApplication extends Application {
         inputMethodManager.showSoftInput(view, 0);
     }
 
-    /**
-     * 使得某个Runnable在UI线程中执行
-     * 
-     * @param r
-     */
     public void runOnUIThread(Runnable r) {
         handler.post(r);
+    }
+    
+    public void runOnUIThread(Runnable r, long delayMillis) {
+    	handler.postDelayed(r, delayMillis);
     }
 }
