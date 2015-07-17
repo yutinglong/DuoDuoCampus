@@ -2,9 +2,12 @@ package com.duoduo.duoduocampus;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import com.duoduo.duoduocampus.api.BaseAPI;
 import com.duoduo.duoduocampus.utils.LogUtil;
+import com.duoduo.duoduocampus.utils.PicassoUtil;
+import com.squareup.picasso.Picasso;
 
 /**
  * @title: MainActivity.java
@@ -22,6 +25,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 //		testMain();
+		testPicasso();
 	}
 
 	private void testMain() {
@@ -44,5 +48,11 @@ public class MainActivity extends Activity {
 						LogUtil.d(LogUtil.YTL_TAG, "onException----------" + status);
 					}
 				});
+	}
+	
+	private void testPicasso() {
+		String pic_url = "http://d06.res.meilishuo.net/img/_o/6d/31/265e349998e66157f45d959fe8cc_640_340.ch.jpg_f125009a_s0_640_340.jpg";
+		ImageView mImageView = (ImageView) findViewById(R.id.test_imageview);
+		PicassoUtil.with_load_info(this, pic_url, mImageView);
 	}
 }
