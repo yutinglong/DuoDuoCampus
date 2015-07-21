@@ -6,8 +6,7 @@ import android.widget.ImageView;
 
 import com.duoduo.duoduocampus.api.BaseAPI;
 import com.duoduo.duoduocampus.utils.LogUtil;
-import com.duoduo.duoduocampus.utils.PicassoUtil;
-import com.squareup.picasso.Picasso;
+import com.duoduo.duoduocampus.utils.NetImageUtil;
 
 /**
  * @title: MainActivity.java
@@ -51,8 +50,9 @@ public class MainActivity extends Activity {
 	}
 	
 	private void testPicasso() {
-		String pic_url = "http://d06.res.meilishuo.net/img/_o/6d/31/265e349998e66157f45d959fe8cc_640_340.ch.jpg_f125009a_s0_640_340.jpg";
+//		String pic_url = "http://d06.res.meilishuo.net/img/_o/6d/31/265e349998e66157f45d959fe8cc_640_340.ch.jpg_f125009a_s0_640_340.jpg";
+		String pic_url = "http://d02.res.meilishuo.net/ap/a/e8/41/ea366c6b640d614a2d4b4a48d726_484_484.cf.jpg.80.webp";
 		ImageView mImageView = (ImageView) findViewById(R.id.test_imageview);
-		PicassoUtil.with_load_info(this, pic_url, mImageView);
+		NetImageUtil.with_load_info(this, pic_url, mImageView);
 	}
 }
