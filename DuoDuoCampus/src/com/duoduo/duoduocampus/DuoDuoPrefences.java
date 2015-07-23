@@ -42,4 +42,8 @@ public class DuoDuoPrefences {
 		mAccessToken = accesstoken;
 		preferences.edit().putString(mAccessTokenString, mAccessToken).commit();
 	}
+	
+	public static boolean isLogin(Context context) {
+		return false;
+	}
 }

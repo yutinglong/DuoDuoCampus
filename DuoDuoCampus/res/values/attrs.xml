@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="OptionsItemView">
+        <attr name="optionTitleColor" format="color" />
+        <attr name="optionContentColor" format="color" />
+        <attr name="optionNumColor" format="color" />
+        <attr name="optionNumBg" format="integer" />
+        <attr name="optionTitle" format="string" />
+        <attr name="optionContent" format="string" />
+        <attr name="optionNum" format="string" />
+        <attr name="optionImage" format="integer" />
+        <attr name="optionArray" format="integer" />
+        <attr name="optionTitleSize" format="integer" />
+    </declare-styleable>
+    
+   <declare-styleable name="RoundImageView">
+        <attr name="hasBorder" format="boolean" />
+        <attr name="borderSize" format="dimension" />
+        <attr name="borderColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="HomeTabView">
+        <attr name="defaultColor" format="color" />
+        <attr name="selectColor" format="color" />
+        <attr name="lineColor" format="color" />
+        <attr name="animation" format="boolean" />
+        <attr name="tabTextSize" format="dimension" />
+        <attr name="gapWidth" format="dimension" />
+        <attr name="lineBeyond" format="dimension" />
+        <attr name="lineWidth" format="dimension" />
+        <attr name="zoomScale" format="float" />
+        <attr name="customResId" format="reference" />
+        <attr name="customIndex" format="integer" />
+        <attr name="showMiddleLine" format="boolean" />
+        <attr name="showBottomLine" format="boolean" />
+    </declare-styleable>
+</resources>

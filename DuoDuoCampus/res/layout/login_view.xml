@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/grey_l1" >
+
+    <ScrollView
+        android:id="@+id/login_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="none"
+        android:fadingEdgeLength="0dip"
+        android:fillViewport="true"
+        android:scrollbars="none" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:id="@+id/loginpanel"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="60dip"
+                android:paddingTop="15dip" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dip" >
+
+                    <com.duoduo.duoduocampus.views.DeletableEditText
+                        android:id="@+id/login_username"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="10dip"
+                        android:layout_marginRight="10dip"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:hint="用户名/手机号"
+                        android:minHeight="50dip"
+                        android:singleLine="true"
+                        android:textColor="@color/grey_d4"
+                        android:textColorHint="@color/grey"
+                        android:textCursorDrawable="@null"
+                        android:textSize="18sp" />
+
+                    <View
+                        style="@style/cutline"
+                        android:layout_marginLeft="10dip" />
+
+                    <com.duoduo.duoduocampus.views.DeletableEditText
+                        android:id="@+id/login_pwd"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="10dip"
+                        android:layout_marginRight="10dip"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:hint="密码"
+                        android:inputType="textPassword"
+                        android:minHeight="50dip"
+                        android:singleLine="true"
+                        android:textColor="@color/grey_d4"
+                        android:textColorHint="@color/grey"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btn_login"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dip"
+                    android:layout_marginRight="15dip"
+                    android:layout_marginTop="15dip"
+                    android:background="@drawable/btn_pink_bg"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:minHeight="45dip"
+                    android:onClick="onClick"
+                    android:text="登录"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dip"
+                    android:layout_marginRight="15dip"
+                    android:layout_marginTop="15dip" >
+
+                    <TextView
+                        android:id="@+id/btn_forget"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:clickable="true"
+                        android:onClick="onClick"
+                        android:text="忘记密码?"
+                        android:textColor="@color/grey_d4"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/btn_register"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:clickable="true"
+                        android:onClick="onClick"
+                        android:text="注册"
+                        android:textColor="@color/grey_d5"
+                        android:textSize="16sp"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

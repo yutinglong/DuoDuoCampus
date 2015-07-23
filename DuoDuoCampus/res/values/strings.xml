@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">多多校园</string>
+    <string name="app_name">测试</string>
     <string name="network_error_hint">"网络不给力，麻烦检查一下"</string>
     <string name="network_error">"网络异常"</string>
     <string name="serverbusy">系统繁忙,请稍候再试</string>
-</resources>
+    
+    
+    <string name="home_tab1">校园公告</string>
+    <string name="home_tab2">学习</string>
+    <string name="home_tab3">教师</string>
+    <string name="setting_str">设置</string>
+    <string name="exit_app_tip">再按一次退出应用</string>
+    
+    <string name="login_title">登录</string>
+    <string name="login_register">注册</string>
+</resources> 

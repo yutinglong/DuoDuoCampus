@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- titlebar背景样式 -->
+    <style name="mainHeader">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/main_title_bar_height</item>
+        <item name="android:paddingLeft">10dip</item>
+        <item name="android:paddingRight">10dip</item>
+        <item name="android:background">@drawable/main_header_bg</item>
+    </style>
+
+    <!-- 边框线 -->
+    <style name="cutline">
+        <item name="android:background">#d9d6d7</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+    </style>
+    
+    <!-- 侧边栏分割线 -->
+    <style name="borderline_slide">
+        <item name="android:background">#EBEBEB</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+    </style>
+</resources>

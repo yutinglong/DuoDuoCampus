@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.duoduo.duoduocampus"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white" >
+
+    <ScrollView
+        android:id="@+id/refresh_view_profile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="20dp" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="13dp"
+                android:paddingRight="13dp" >
+
+                <RelativeLayout
+                    android:id="@+id/layout_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp" 
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/profile_login_round_pic"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="5dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/profile_icon_noimage" />
+
+                    <ImageView
+                        android:id="@+id/iv_daren"
+                        android:layout_width="12dip"
+                        android:layout_height="12dip"
+                        android:layout_alignBottom="@id/profile_login_round_pic"
+                        android:layout_alignRight="@id/profile_login_round_pic"
+                        android:layout_marginRight="4dip" />
+
+                    <ImageView
+                        android:id="@+id/arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/circle_info_arrow" />
+
+                    <ImageView
+                        android:id="@+id/login_name_red_tip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@id/arrow"
+                        android:background="@drawable/me_bg_bubble_small_new"
+                        android:visibility="gone" />
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_toLeftOf="@id/login_name_red_tip"
+                        android:layout_toRightOf="@id/profile_login_round_pic" >
+
+                        <LinearLayout
+                            android:id="@+id/name_daren"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/profile_login_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:ellipsize="end"
+                                android:singleLine="true"
+                                android:textColor="@color/grey_d2"
+                                android:textSize="18sp" />
+
+                            <ImageView
+                                android:id="@+id/iv_vip"
+                                android:layout_width="22dip"
+                                android:layout_height="22dip"
+                                android:layout_marginLeft="15dip"
+                                android:layout_marginRight="5dip" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/profile_login_address_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/name_daren"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:clickable="true"
+                            android:drawablePadding="5dp"
+                            android:gravity="center_vertical"
+                            android:text="我的收货地址"
+                            android:textColor="#999999"
+                            android:textSize="12sp" />
+
+                        <!-- 金币 -->
+
+                        <LinearLayout
+                            android:id="@+id/profile_login_coin_layout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/name_daren"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:clickable="true"
+                            android:onClick="onClick"
+                            android:orientation="horizontal"
+                            android:visibility="gone" >
+
+                            <ImageView
+                                android:id="@+id/icon_img"
+                                android:layout_width="16dip"
+                                android:layout_height="16dip" />
+
+                            <TextView
+                                android:id="@+id/profile_login_coin_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="16dip"
+                                android:layout_marginLeft="5dip"
+                                android:gravity="center_vertical"
+                                android:textColor="@color/grey_d2"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layout_nologin"
+                    android:layout_width="match_parent"
+                    android:layout_height="115dp"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/nologin_bar"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp" >
+
+                        <TextView
+                            android:id="@+id/login_nologin"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="6dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/btn_login_slid"
+                            android:gravity="center"
+                            android:paddingBottom="9dp"
+                            android:paddingTop="9dp"
+                            android:text="登录"
+                            android:textColor="@color/grey_d2"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/register_nologin"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="6dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/btn_done_bg"
+                            android:gravity="center"
+                            android:paddingBottom="9dp"
+                            android:paddingTop="9dp"
+                            android:text="注册"
+                            android:textColor="@color/grey_d2"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <com.duoduo.duoduocampus.profile.views.RoundImageView
+                        android:id="@+id/profile_nologin_round_pic"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:scaleType="fitXY" 
+                        android:src="@drawable/head_default_big"/>
+                </RelativeLayout>
+
+                <com.duoduo.duoduocampus.profile.views.OptionsItemView
+                    android:id="@+id/layout_purse"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/option_item_height2"
+                    app:optionArray="@drawable/circle_info_arrow"
+                    app:optionContentColor="@color/pink_t80"
+                    app:optionImage="@drawable/me_ico_site"
+                    app:optionTitle="@string/setting_str"
+                    app:optionTitleSize="14" />
+                
+                <com.duoduo.duoduocampus.profile.views.OptionsItemView
+                    android:id="@+id/layout_purse1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/option_item_height2"
+                    app:optionArray="@drawable/circle_info_arrow"
+                    app:optionContentColor="@color/pink_t80"
+                    app:optionImage="@drawable/me_ico_site"
+                    app:optionTitle="@string/setting_str"
+                    app:optionTitleSize="14" />
+                
+				<com.duoduo.duoduocampus.profile.views.OptionsItemView
+                    android:id="@+id/layout_purse2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/option_item_height2"
+                    app:optionArray="@drawable/circle_info_arrow"
+                    app:optionContentColor="@color/pink_t80"
+                    app:optionImage="@drawable/me_ico_site"
+                    app:optionTitle="@string/setting_str"
+                    app:optionTitleSize="14" />
+                
+                <View
+                    style="@style/borderline_slide"
+                    android:layout_height="1dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
