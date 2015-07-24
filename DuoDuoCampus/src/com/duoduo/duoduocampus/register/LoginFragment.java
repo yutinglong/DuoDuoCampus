@@ -99,12 +99,14 @@ public class LoginFragment extends BaseFragment implements OnClickListener {
 					@Override
 					public void onCompleted(String result) {
 						LogUtil.d(LogUtil.YTL_TAG, "onCompleted----------" + result);
+						DToast.toastShort("result: " + result);
 					}
 
 					@Override
 					public void onException(int status, String result,
 							String error) {
 						LogUtil.d(LogUtil.YTL_TAG, "onException----------" + status);
+						DToast.toastShort("onException status: " + status);
 					}
 				});
 	}
