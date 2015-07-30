@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+   <!-- 粉色系 -->
     <color name="pink">#FF6699</color>
+    <color name="pink_99">#FF7A9A</color>
+    <color name="pink_t60">#99FF6699</color><!--60% -->
+    <color name="pink_t80">#CCFF6699</color><!--80%-->
+    <color name="pink_t70">#B2FF6699</color><!--70%-->
+    <color name="pink_l1">#FF8CB3</color><!--最浅-->
     <color name="pink_l2">#FF7A9A</color>
-    <color name="pink_t80">#CCFF6699</color> <!-- 80% -->
+    <color name="pink_l2_t90">#E5FF7A9A</color><!-- 90% -->
+    <color name="pink_l3">#FF7979</color>
+    <color name="pink_l4">#FF72A0</color>
+    <color name="pink_l5">#FF7080</color>
+    <color name="pink_l6">#FB8080</color>
+    <color name="pink_d7">#FF6666</color>
+    <color name="pink_d7_t14">#23FF6666</color><!-- 14% -->
+    <color name="pink_d7_t80">#CCFF6666</color><!-- 80% -->
+    <color name="pink_d6">#FF6396</color>
+    <color name="pink_d5">#FF505C</color>
+    <color name="pink_d4">#FF4A4A</color>
+    <color name="pink_d3">#F29191</color>
+    <color name="pink_d2">#F23D3D</color>
+    <color name="pink_d8">#FF6799</color>
+     <color name="pink_d8_t1">#F15085</color>
+    <color name="pink_d1">#F63631</color><!--最深-->
+    <color name="pink_d1_t28">#48F63631</color><!-- 28% -->
+ 	 <color name="pink_d4_t1">#FF81A9</color>
 
 
     <!-- 灰色系 -->
@@ -53,4 +76,15 @@
     <color name="white_t90">#E5FFFFFF</color> <!-- 90% -->
     <color name="white_t50">#80FFFFFF</color> <!-- 50% -->
 
+    <!--透明-->
+    <color name="transparent">#00000002</color> <!-- 全透明 -->
+    
+  	<!-- 红色 -->
+    <color name="red">#FF0000</color>
+    
+    <!--黑色系-->
+    <color name="black">#000000</color> <!-- 黑色 -->
+    <color name="black_t70">#B2000000</color><!-- 70% -->
+    <color name="black_t50">#7F000000</color><!-- 50% -->
+    <color name="black_t38">#60000000</color><!-- 38% -->
 </resources>

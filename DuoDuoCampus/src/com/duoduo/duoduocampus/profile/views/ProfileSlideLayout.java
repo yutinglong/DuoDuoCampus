@@ -1,5 +1,6 @@
 package com.duoduo.duoduocampus.profile.views;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
@@ -10,8 +11,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.duoduo.duoduocampus.DataCenter;
 import com.duoduo.duoduocampus.DuoDuoPrefences;
 import com.duoduo.duoduocampus.R;
+import com.duoduo.duoduocampus.activity.ProfileSettingActivity;
+import com.duoduo.duoduocampus.api.BaseAPI;
+import com.duoduo.duoduocampus.model.DuoDuoUser;
 import com.duoduo.duoduocampus.register.LoginActivity;
 
 public class ProfileSlideLayout extends RelativeLayout implements
@@ -54,6 +59,13 @@ public class ProfileSlideLayout extends RelativeLayout implements
 	public void onResume() {
 		if (DuoDuoPrefences.isLogin(context)) {
 			// 数据同步
+			// 获取头像
+			getUserInfo();
+			getUserIcon();
+		
+			refreshUserInfo();
+			
+			changeLoginView();
 		} else {
 			changeUnloginView();
 		}
@@ -88,14 +100,70 @@ public class ProfileSlideLayout extends RelativeLayout implements
 		findViewById(R.id.layout_login).setVisibility(View.GONE);
 		findViewById(R.id.layout_nologin).setVisibility(View.VISIBLE);
 	}
+	
+	// 登录状态
+	private void changeLoginView() {
+		findViewById(R.id.layout_login).setVisibility(View.VISIBLE);
+		findViewById(R.id.layout_nologin).setVisibility(View.GONE);
+	}
+	
+	private void getUserIcon() {
+//		BaseAPI.getInstance().get((Activity) context, "users/"+DuoDuoPrefences.getNickName(context)+"/portrait/", null,
+//				new BaseAPI.RequestListener<DuoDuoUser>() {
+//
+//					@Override
+//					public void onException(int status, DuoDuoUser result,
+//							String error) {
+//					}
+//
+//					@Override
+//					public void onCompleted(DuoDuoUser result) {
+//					}
+//				});
+	}
+	
+	private void refreshUserInfo() {
+		if (DataCenter.mDuoDuoUser != null) {
+			myNameWithVip.setText(DataCenter.mDuoDuoUser.realName);
+		}
+	}
+	
+	// 获取用户信息
+	private void getUserInfo() {
+		BaseAPI.getInstance().get((Activity) context, "users/"+DuoDuoPrefences.getNickName(context), null,
+				new BaseAPI.RequestListener<DuoDuoUser>() {
+
+					@Override
+					public void onException(int status, DuoDuoUser result,
+							String error) {
+					}
+
+					@Override
+					public void onCompleted(DuoDuoUser result) {
+						if (result != null) {
+							DataCenter.mDuoDuoUser = result;
+						}
+					}
+				});
+	}
 
 	@Override
 	public void onClick(View v) {
 		int viewId = v.getId();
 		switch (viewId) {
-		case R.id.login_nologin:
+		case R.id.login_nologin:// 登录
 			Intent loginIntent = new Intent(context, LoginActivity.class);
 			context.startActivity(loginIntent);
+			break;
+		case R.id.register_nologin:// 注册
+			Intent registerIntent = new Intent(context, LoginActivity.class);
+			registerIntent.putExtra("type", "register");
+			context.startActivity(registerIntent);
+			break;
+		case R.id.layout_login:// 个人信息
+			Intent settingProfile = new Intent(context,
+					ProfileSettingActivity.class);
+			context.startActivity(settingProfile);
 			break;
 		}
 	}

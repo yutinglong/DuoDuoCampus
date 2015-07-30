@@ -35,4 +35,9 @@
         <attr name="showMiddleLine" format="boolean" />
         <attr name="showBottomLine" format="boolean" />
     </declare-styleable>
+    
+	<declare-styleable name="HighLightTextView">
+        <attr name="highLightText" format="string" />
+        <attr name="highLightTextColor" format="color" />
+    </declare-styleable>
 </resources>

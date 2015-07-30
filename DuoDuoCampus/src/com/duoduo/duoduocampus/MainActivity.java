@@ -45,6 +45,10 @@ public class MainActivity extends ActivityGroup implements OnClickListener {
 		initTabIntent(savedInstanceState);
 	}
 
+	public void onResume() {
+		super.onResume();
+		menu.onResume();
+	}
 	
 	private void initView(){
 		menu = (ProfileSlideLayout)this.findViewById(R.id.layout_menu);

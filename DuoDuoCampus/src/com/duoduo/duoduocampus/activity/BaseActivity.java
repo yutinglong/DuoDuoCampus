@@ -4,15 +4,24 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnDismissListener;
+import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 
 import com.duoduo.duoduocampus.R;
+import com.duoduo.duoduocampus.api.BaseAPI;
 import com.duoduo.duoduocampus.msg.Messenger;
 import com.duoduo.duoduocampus.profile.views.CustomDrawerLayout;
 import com.duoduo.duoduocampus.utils.DToast;
@@ -31,7 +40,10 @@ public class BaseActivity extends FragmentActivity {
 	protected MyTimerTask task;
 
 	private ArrayList<View> mIgnoreViews = new ArrayList<View>();
-
+	
+	private Dialog mWaitingDialog;
+	private boolean isWaitingDialogCancelable = false;
+	
 	/**
 	 * 当touch非输入框Edittext区域自动隐藏键盘
 	 */
@@ -162,6 +174,74 @@ public class BaseActivity extends FragmentActivity {
 			return true;
 		} else {
 			return super.onKeyDown(keyCode, event);
+		}
+	}
+	
+	public void showWaitingDialog() {
+		showMeilishuoDialog("正在加载...");
+	}
+
+	public void showMeilishuoDialog() {
+		showMeilishuoDialog(null);
+	}
+
+	public void showMeilishuoDialog(String msg) {
+		showMeilishuoDialog(msg, -1);
+	}
+
+	public void showMeilishuoDialog(int rId) {
+		showMeilishuoDialog(getResources().getString(rId));
+	}
+	
+	public void showMeilishuoDialog(String msg, final long requestId, OnCancelListener mOnCancelListener) {
+		View contentView = null;
+		if (mWaitingDialog == null) {
+			mWaitingDialog = new Dialog(this, R.style.DialogNoBgStyle);
+			contentView = View.inflate(getApplicationContext(),
+					R.layout.waitting_dialog, null);
+			LayoutParams lp = new LayoutParams(LayoutParams.WRAP_CONTENT,
+					LayoutParams.WRAP_CONTENT);
+			mWaitingDialog.addContentView(contentView, lp);
+			mWaitingDialog.setCancelable(true);
+			mWaitingDialog.setCanceledOnTouchOutside(isWaitingDialogCancelable);
+		} else {
+			contentView = mWaitingDialog.findViewById(R.id.content);
+		}
+		TextView loading_msg = (TextView) contentView
+				.findViewById(R.id.loading_msg);
+		if (!TextUtils.isEmpty(msg)) {
+			loading_msg.setVisibility(View.VISIBLE);
+			loading_msg.setText(msg);
+			contentView.setBackgroundResource(R.drawable.progressbar_bg);
+		} else {
+			loading_msg.setVisibility(View.GONE);
+			contentView.setBackgroundColor(Color.TRANSPARENT);
+		}
+		if (!isFinishing() && !mWaitingDialog.isShowing()) {
+			mWaitingDialog.show();
+		}
+		mWaitingDialog.setOnCancelListener(mOnCancelListener);
+	}
+	
+	public void showMeilishuoDialog(String msg, final long requestId) {
+		showMeilishuoDialog(msg, requestId, new OnCancelListener() {
+
+			@Override
+			public void onCancel(DialogInterface dialog) {
+				dialog.dismiss();
+				BaseAPI.getInstance().abort(requestId);
+			}
+		});
+ 	}
+	public void dismissDialog() {
+		if (!isFinishing() && mWaitingDialog != null
+				&& mWaitingDialog.isShowing()) {
+			mWaitingDialog.dismiss();
+		}
+	}
+	public void setDialogOnDismissListener(OnDismissListener listener){
+		if(mWaitingDialog != null) {
+			mWaitingDialog.setOnDismissListener(listener);
 		}
 	}
 }

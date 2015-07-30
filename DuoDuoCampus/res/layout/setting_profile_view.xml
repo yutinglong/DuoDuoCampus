@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/grey_l1"
+    android:gravity="top" >
+
+    <RelativeLayout
+        android:id="@+id/setting_profile_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white" >
+
+        <TextView
+            android:id="@+id/setting_profile_btn_back"
+            style="@style/TopBackBtn"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:id="@+id/setting_profile_title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="个人信息"
+            android:textColor="@color/grey_d4"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/setting_profile_title_bar"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp" >
+
+            <View style="@style/borderline" />
+
+            <RelativeLayout
+                android:id="@+id/setting_profile_headview"
+                android:layout_width="match_parent"
+                android:layout_height="60dp" >
+
+                <ImageView
+                    android:id="@+id/setting_profile_headview_img"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/personal_ico_avatar" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/setting_profile_headview_img"
+                    android:text="头像"
+                    android:textColor="@color/grey_d2"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/setting_profile_headview_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/circle_info_arrow" />
+
+                <com.duoduo.duoduocampus.profile.views.RoundImageView
+                    android:id="@+id/setting_profile_headview_pic"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/setting_profile_headview_arrow"
+                    android:scaleType="centerCrop" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/setting_profile_nickname"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" >
+
+                <ImageView
+                    android:id="@+id/setting_profile_nickname_img"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/personal_ico_name" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/setting_profile_nickname_img"
+                    android:text="昵称"
+                    android:textColor="@color/grey_d2"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/setting_profile_nickname_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/circle_info_arrow"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/setting_profile_nickname_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/setting_profile_nickname_arrow"
+                    android:textColor="@color/grey"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/setting_profile_address"
+                android:layout_width="match_parent"
+                android:layout_height="60dp" >
+
+                <ImageView
+                    android:id="@+id/setting_profile_gender_img"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/personal_ico_address" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/setting_profile_gender_img"
+                    android:text="性别"
+                    android:textColor="@color/grey_d2"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/setting_profile_gender_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/circle_info_arrow"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="centerCrop" />
+                
+				<TextView
+                    android:id="@+id/setting_profile_gender_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/setting_profile_gender_arrow"
+                    android:textColor="@color/grey"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <View
+                style="@style/borderline_slide"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:id="@+id/setting_profile_exit"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/red_exit_btn"
+                android:gravity="center"
+                android:text="退出登录"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

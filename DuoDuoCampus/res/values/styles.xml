@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- titlebar返回按钮样式 -->
+    <style name="TopBackBtn">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:drawableLeft">@drawable/personal_ico_return</item>
+        <item name="android:drawablePadding">-10dip</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/grey_d4</item>
+        <item name="android:paddingRight">10dip</item>
+        <item name="android:paddingTop">10dip</item>
+        <item name="android:paddingBottom">10dip</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <!-- 边框线 -->
+    <style name="borderline">
+        <item name="android:background">#1A000000</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+    </style>
+
     <!-- titlebar背景样式 -->
     <style name="mainHeader">
         <item name="android:layout_width">match_parent</item>
@@ -16,11 +38,46 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1px</item>
     </style>
-    
+
     <!-- 侧边栏分割线 -->
     <style name="borderline_slide">
         <item name="android:background">#EBEBEB</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1px</item>
+    </style>
+
+    <!-- 无背景dialog样式 -->
+    <style name="DialogNoBgStyle" parent="@android:style/Theme.Translucent">
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <!-- 模糊 -->
+    </style>
+
+    <style name="MessageBoxDialogStyle" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+    
+	<style name="MessageBoxMessageStyle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/grey_d5</item>
+    </style>
+    
+    <style name="DoneButtonStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    
+    <style name="CancelButtonStyle">
+        <item name="android:textColor">@color/grey_d4</item>
+        <item name="android:textSize">15sp</item>
     </style>
 </resources>

@@ -27,8 +27,9 @@
                 <RelativeLayout
                     android:id="@+id/layout_login"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp" 
-                    android:visibility="gone">
+                    android:layout_height="80dp"
+                    android:visibility="gone" 
+                    >
 
                     <ImageView
                         android:id="@+id/profile_login_round_pic"
@@ -147,8 +148,7 @@
                 <RelativeLayout
                     android:id="@+id/layout_nologin"
                     android:layout_width="match_parent"
-                    android:layout_height="115dp"
-                    >
+                    android:layout_height="115dp" >
 
                     <LinearLayout
                         android:id="@+id/nologin_bar"
@@ -196,8 +196,9 @@
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:scaleType="fitXY" 
-                        android:src="@drawable/head_default_big"/>
+                        android:scaleType="fitXY"
+                        android:src="@drawable/head_default_big" />
+
                 </RelativeLayout>
 
                 <com.duoduo.duoduocampus.profile.views.OptionsItemView
@@ -207,9 +208,9 @@
                     app:optionArray="@drawable/circle_info_arrow"
                     app:optionContentColor="@color/pink_t80"
                     app:optionImage="@drawable/me_ico_site"
-                    app:optionTitle="@string/setting_str"
+                    app:optionTitle="成绩查询"
                     app:optionTitleSize="14" />
-                
+
                 <com.duoduo.duoduocampus.profile.views.OptionsItemView
                     android:id="@+id/layout_purse1"
                     android:layout_width="fill_parent"
@@ -217,19 +218,29 @@
                     app:optionArray="@drawable/circle_info_arrow"
                     app:optionContentColor="@color/pink_t80"
                     app:optionImage="@drawable/me_ico_site"
-                    app:optionTitle="@string/setting_str"
+                    app:optionTitle="在校表现"
                     app:optionTitleSize="14" />
-                
-				<com.duoduo.duoduocampus.profile.views.OptionsItemView
+
+                <com.duoduo.duoduocampus.profile.views.OptionsItemView
                     android:id="@+id/layout_purse2"
                     android:layout_width="fill_parent"
                     android:layout_height="@dimen/option_item_height2"
                     app:optionArray="@drawable/circle_info_arrow"
                     app:optionContentColor="@color/pink_t80"
                     app:optionImage="@drawable/me_ico_site"
-                    app:optionTitle="@string/setting_str"
+                    app:optionTitle="家长嘱托"
                     app:optionTitleSize="14" />
-                
+
+                <com.duoduo.duoduocampus.profile.views.OptionsItemView
+                    android:id="@+id/layout_purse3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/option_item_height2"
+                    app:optionArray="@drawable/circle_info_arrow"
+                    app:optionContentColor="@color/pink_t80"
+                    app:optionImage="@drawable/me_ico_site"
+                    app:optionTitle="关于"
+                    app:optionTitleSize="14" />
+
                 <View
                     style="@style/borderline_slide"
                     android:layout_height="1dp" />

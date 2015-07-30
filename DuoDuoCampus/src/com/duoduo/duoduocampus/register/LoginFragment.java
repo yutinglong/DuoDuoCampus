@@ -1,10 +1,9 @@
 package com.duoduo.duoduocampus.register;
 
-import java.util.ArrayList;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -17,10 +16,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.duoduo.duoduocampus.BaseFragment;
+import com.duoduo.duoduocampus.DataCenter;
+import com.duoduo.duoduocampus.DuoDuoPrefences;
 import com.duoduo.duoduocampus.R;
+import com.duoduo.duoduocampus.activity.BaseActivity;
 import com.duoduo.duoduocampus.api.BaseAPI;
+import com.duoduo.duoduocampus.model.DuoDuoUser;
+import com.duoduo.duoduocampus.utils.Constants;
 import com.duoduo.duoduocampus.utils.DToast;
-import com.duoduo.duoduocampus.utils.LogUtil;
+import com.google.gson.Gson;
 
 /**
  *
@@ -33,13 +37,33 @@ import com.duoduo.duoduocampus.utils.LogUtil;
  * @changeRecord
  */
 public class LoginFragment extends BaseFragment implements OnClickListener {
-
+	private Gson gson = new Gson();
 	private EditText mEditTextUserName;// 用户名
 	private EditText mEditTextPwd;// 密码
 
+	
+
+	private BroadcastReceiver user_login_receiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+  			getActivity().setResult(200);
+			getActivity().finish();
+			
+			if (DuoDuoPrefences.isLogin(getActivity())) {
+				if (LoginActivity.mLoginListener != null) {
+					LoginActivity.mLoginListener.onLoginSuccess();
+				}
+				LoginActivity.mLoginListener = null;
+			}
+			
+ 		}
+	};
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getActivity().registerReceiver(user_login_receiver,
+				new IntentFilter(Constants.USER_LOGIN));
 	}
 
 	@Override
@@ -48,6 +72,12 @@ public class LoginFragment extends BaseFragment implements OnClickListener {
 		View view = inflater.inflate(R.layout.login_view, container, false);
 		initUI(view);
 		return view;
+	}
+	
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		getActivity().unregisterReceiver(user_login_receiver);
 	}
 
 	private void initUI(final View view) {
@@ -85,28 +115,44 @@ public class LoginFragment extends BaseFragment implements OnClickListener {
 			return;
 		}
 		
-		ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("userName", userName));
-		params.add(new BasicNameValuePair("passWord", pwd));
-		BaseAPI.getInstance().post(getActivity(), "utils/userlogin", params,
-				new BaseAPI.RequestListener<String>() {
+		((BaseActivity) getActivity()).showMeilishuoDialog();
+		
+		DuoDuoUser mDuoDuoUser = new DuoDuoUser();
+		mDuoDuoUser.username = userName;
+		mDuoDuoUser.password = pwd;
+		String jsonStr = gson.toJson(mDuoDuoUser);
+		
+		BaseAPI.getInstance().post(getActivity(), "utils/userlogin", jsonStr,
+				new BaseAPI.RequestListener<DuoDuoUser>() {
 					@Override
 					public void onStart(long requestId) {
 						super.onStart(requestId);
-						LogUtil.d(LogUtil.YTL_TAG, "onStart----------");
+						DuoDuoPrefences.setNickName(getActivity(), null);
 					}
 
 					@Override
-					public void onCompleted(String result) {
-						LogUtil.d(LogUtil.YTL_TAG, "onCompleted----------" + result);
-						DToast.toastShort("result: " + result);
+					public void onCompleted(DuoDuoUser result) {
+						((BaseActivity) getActivity()).dismissDialog();
+
+						if (result != null) {
+							DuoDuoPrefences.setNickName(getActivity(),
+									result.username);
+							
+							DataCenter.mDuoDuoUser = result;
+							getActivity().sendBroadcast(
+									new Intent(Constants.USER_LOGIN));
+						} else {
+							DToast.toastShort("用户名或密码错误");
+						}
+						
 					}
 
 					@Override
-					public void onException(int status, String result,
+					public void onException(int status, DuoDuoUser result,
 							String error) {
-						LogUtil.d(LogUtil.YTL_TAG, "onException----------" + status);
-						DToast.toastShort("onException status: " + status);
+						((BaseActivity) getActivity()).dismissDialog();
+						
+						DToast.toastShort("登录失败，请重试!");
 					}
 				});
 	}

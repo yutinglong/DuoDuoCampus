@@ -13,6 +13,9 @@ import android.os.Environment;
 public class Constants {
     public static final String UTF8 = "utf-8";
     
+    public static final String USER_LOGIN = "com.meilishuo.app.action.user_login";
+    
+    
 	public final static String SDCARD_DIR = Environment.getExternalStorageDirectory().getPath() + "/duoduo/";
 	public final static String PHOTO_DIR = Environment.getExternalStorageDirectory().getPath() + "/duoduo_photo/";
 	public final static String SOUND_DIR = SDCARD_DIR + "sound/";
