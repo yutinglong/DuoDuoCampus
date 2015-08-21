@@ -1,0 +1,11 @@
+1. duoduocampus/restapi/v1/classinfos       班级信息  获得单个班级信息,在前面url后面加‘/id’,例如"duoduocampus/restapi/v1/classinfos/1", 下同
+2. duoduocampus/restapi/v1/courses          课程信息
+3. duoduocampus/restapi/v1/homeworks        家庭作业
+4. duoduocampus/restapi/v1/news             新闻通知
+5. duoduocampus/restapi/v1/parentsentrusts  父母嘱托
+6. duoduocampus/restapi/v1/schools          学校信息
+7. duoduocampus/restapi/v1/students         学生信息
+8. duoduocampus/restapi/v1/studentappraisals学生评价信息
+9. duoduocampus/restapi/v1/teachers         老师信息
+10.duoduocampus/restapi/v1/teachplans       教学计划
+11.duoduocampus/restapi/v1/users            用户信息
