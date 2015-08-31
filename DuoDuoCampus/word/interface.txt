@@ -1,11 +1,11 @@
-1. duoduocampus/restapi/v1/classinfos       °à¼¶ĞÅÏ¢  »ñµÃµ¥¸ö°à¼¶ĞÅÏ¢,ÔÚÇ°ÃæurlºóÃæ¼Ó¡®/id¡¯,ÀıÈç"duoduocampus/restapi/v1/classinfos/1", ÏÂÍ¬
-2. duoduocampus/restapi/v1/courses          ¿Î³ÌĞÅÏ¢
-3. duoduocampus/restapi/v1/homeworks        ¼ÒÍ¥×÷Òµ
-4. duoduocampus/restapi/v1/news             ĞÂÎÅÍ¨Öª
-5. duoduocampus/restapi/v1/parentsentrusts  ¸¸Ä¸ÖöÍĞ
-6. duoduocampus/restapi/v1/schools          Ñ§Ğ£ĞÅÏ¢
-7. duoduocampus/restapi/v1/students         Ñ§ÉúĞÅÏ¢
-8. duoduocampus/restapi/v1/studentappraisalsÑ§ÉúÆÀ¼ÛĞÅÏ¢
-9. duoduocampus/restapi/v1/teachers         ÀÏÊ¦ĞÅÏ¢
-10.duoduocampus/restapi/v1/teachplans       ½ÌÑ§¼Æ»®
-11.duoduocampus/restapi/v1/users            ÓÃ»§ĞÅÏ¢
+1. duoduocampus/restapi/v1/classinfos       ç­çº§ä¿¡æ¯  è·å¾—å•ä¸ªç­çº§ä¿¡æ¯,åœ¨å‰é¢urlåé¢åŠ â€˜/idâ€™,ä¾‹å¦‚"duoduocampus/restapi/v1/classinfos/1", ä¸‹åŒ
+2. duoduocampus/restapi/v1/courses          è¯¾ç¨‹ä¿¡æ¯
+3. duoduocampus/restapi/v1/homeworks        å®¶åº­ä½œä¸š
+4. duoduocampus/restapi/v1/news             æ–°é—»é€šçŸ¥
+5. duoduocampus/restapi/v1/parentsentrusts  çˆ¶æ¯å˜±æ‰˜
+6. duoduocampus/restapi/v1/schools          å­¦æ ¡ä¿¡æ¯
+7. duoduocampus/restapi/v1/students         å­¦ç”Ÿä¿¡æ¯
+8. duoduocampus/restapi/v1/studentappraisalså­¦ç”Ÿè¯„ä»·ä¿¡æ¯
+9. duoduocampus/restapi/v1/teachers         è€å¸ˆä¿¡æ¯
+10.duoduocampus/restapi/v1/teachplans       æ•™å­¦è®¡åˆ’
+11.duoduocampus/restapi/v1/users            ç”¨æˆ·ä¿¡æ¯

@@ -80,4 +80,10 @@
         <item name="android:textColor">@color/grey_d4</item>
         <item name="android:textSize">15sp</item>
     </style>
+    
+    <style name="message_cutline">
+        <item name="android:background">#19333333</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+    </style>
 </resources>

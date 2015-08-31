@@ -12,9 +12,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:text="首页"
             android:textColor="#80737B"
-            android:textSize="20sp" 
-            android:text="首页" />
+            android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/iv_slidebar"
@@ -26,19 +26,17 @@
             android:src="@drawable/index_icon_menu" />
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/text_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ListView
+        android:id="@+id/main_new_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="7dp"
+        android:divider="@null"
         android:layout_below="@id/header"
-        android:text="校园公告"
-        android:textColor="@color/pink_l2"
-        android:textSize="@dimen/home_tab_text_size" />
+        android:fastScrollEnabled="true"
+        android:scrollbars="none" >
+    </ListView>
+    
 
-    <ImageView
-        android:id="@+id/test_imageview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/text_profile" />
 
 </RelativeLayout>
