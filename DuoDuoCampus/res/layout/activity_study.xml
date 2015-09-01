@@ -3,11 +3,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white" >
+    
+    <RelativeLayout
+        android:id="@+id/header"
+        style="@style/mainHeader" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="校园"
+            android:textColor="#80737B"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/iv_slidebar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+            android:src="@drawable/index_icon_menu" />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/text_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/header"
         android:text="教学计划、课程表、作业安排"
         android:textColor="@color/pink_l2"
         android:textSize="@dimen/home_tab_text_size" />
