@@ -1,7 +1,8 @@
-package com.duoduo.duoduocampus.model;
+package com.duoduo.duoduocampus.model.net;
 
 import java.util.List;
 
+import com.duoduo.duoduocampus.model.News;
 import com.google.gson.annotations.SerializedName;
 
 public class NewModel {
@@ -19,32 +20,6 @@ public class NewModel {
 	
 	@SerializedName("items")
 	public List<News> items;
-	
-	public class News {
-		@SerializedName("newId")
-		public String newId;
-		
-		@SerializedName("newTitle")
-		public String newTitle;
-		
-		@SerializedName("newDate")
-		public String newDate;
-		
-		@SerializedName("newContent")
-		public String newContent;
-		
-		@SerializedName("newFor")
-		public String newFor;
-		
-		@SerializedName("newType")
-		public NewType newType;
-	}
-	
-	public class NewType {
-		@SerializedName("typeId")	
-		public String typeId;
-	}
-	
 	
 //	{
 //		  "items" : [ {

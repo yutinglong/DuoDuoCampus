@@ -11,12 +11,11 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.duoduo.duoduocampus.R;
-import com.duoduo.duoduocampus.model.NewModel;
-import com.duoduo.duoduocampus.model.NewModel.News;
+import com.duoduo.duoduocampus.model.News;
 
 public class NewsListAdapter extends BaseAdapter {
 	private LayoutInflater mInflater = null;
-	private List<NewModel.News> data = new ArrayList<NewModel.News>();
+	private List<News> data = new ArrayList<News>();
 
 	public NewsListAdapter(Context context, List<News> dataList) {
 		this.mInflater = LayoutInflater.from(context);

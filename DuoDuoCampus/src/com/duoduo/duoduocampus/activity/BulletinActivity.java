@@ -12,7 +12,8 @@ import android.widget.ListView;
 import com.duoduo.duoduocampus.R;
 import com.duoduo.duoduocampus.adapter.NewsListAdapter;
 import com.duoduo.duoduocampus.api.BaseAPI;
-import com.duoduo.duoduocampus.model.NewModel;
+import com.duoduo.duoduocampus.model.News;
+import com.duoduo.duoduocampus.model.net.NewModel;
 import com.duoduo.duoduocampus.msg.Messenger;
 import com.duoduo.duoduocampus.utils.LogUtil;
 
@@ -28,7 +29,7 @@ public class BulletinActivity extends BaseActivity {
 	private ListView mListView;
 	private NewsListAdapter mAdapter;
 	private View mView;
-	private List<NewModel.News> dataList = new ArrayList<NewModel.News>();
+	private List<News> dataList = new ArrayList<News>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +72,7 @@ public class BulletinActivity extends BaseActivity {
 						LogUtil.d("YTL", "onCompleted : " + result);
 						if (result != null) {
 							if (result.items.size() > 0) {
-								for (NewModel.News mNews : result.items) {
+								for (News mNews : result.items) {
 									dataList.add(mNews);
 									dataList.add(mNews);
 									dataList.add(mNews);
