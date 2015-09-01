@@ -25,10 +25,11 @@ import com.duoduo.duoduocampus.utils.LogUtil;
  * @version: 1.0.0
  * @created：2015年7月23日
  */
-public class BulletinActivity extends BaseActivity {
+public class BulletinActivity extends BaseActivity implements OnClickListener {
 	private ListView mListView;
 	private NewsListAdapter mAdapter;
 	private View mView;
+	private View mRefresh;
 	private List<News> dataList = new ArrayList<News>();
 
 	@Override
@@ -40,13 +41,16 @@ public class BulletinActivity extends BaseActivity {
 
 		initView();
 
-		getNewsData();
+		onRefresh();
 	}
-
 
 	private void initView() {
 		mListView = (ListView) findViewById(R.id.main_new_list);
+		mRefresh = findViewById(R.id.tv_refresh);
 		mView = findViewById(R.id.iv_slidebar);
+		
+		
+		mRefresh.setOnClickListener(this);
 		mView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -72,6 +76,7 @@ public class BulletinActivity extends BaseActivity {
 						LogUtil.d("YTL", "onCompleted : " + result);
 						if (result != null) {
 							if (result.items.size() > 0) {
+								dataList.clear();
 								for (News mNews : result.items) {
 									dataList.add(mNews);
 									dataList.add(mNews);
@@ -104,5 +109,18 @@ public class BulletinActivity extends BaseActivity {
 						LogUtil.d("YTL", "onException : " + result + "");
 					}
 				});
+	}
+
+	private void onRefresh() {
+		getNewsData();
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.tv_refresh:// 刷新
+			onRefresh();
+			break;
+		}
 	}
 }
