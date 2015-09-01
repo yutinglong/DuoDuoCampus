@@ -14,4 +14,8 @@
     
     <string name="login_title">登录</string>
     <string name="login_register">注册</string>
+    
+    <string name="study_teachplans">教学</string>
+    <string name="study_courses">课程</string>
+    <string name="study_homeworks">作业</string>
 </resources> 

@@ -26,16 +26,6 @@ import com.duoduo.duoduocampus.utils.Constants;
 import com.duoduo.duoduocampus.utils.DToast;
 import com.google.gson.Gson;
 
-/**
- *
- * @title:用户登录
- * @description:
- * @company: 美丽说（北京）网络科技有限公司
- * @author yinxinya
- * @version 1.0
- * @created
- * @changeRecord
- */
 public class LoginFragment extends BaseFragment implements OnClickListener {
 	private Gson gson = new Gson();
 	private EditText mEditTextUserName;// 用户名

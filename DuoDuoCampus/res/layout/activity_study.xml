@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white" >
     
-    <RelativeLayout
+   <RelativeLayout
         android:id="@+id/header"
         style="@style/mainHeader" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="校园"
-            android:textColor="#80737B"
-            android:textSize="20sp" />
-
-        <ImageView
+        
+       <ImageView
             android:id="@+id/iv_slidebar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,22 +17,28 @@
             android:paddingBottom="8dip"
             android:paddingTop="8dip"
             android:src="@drawable/index_icon_menu" />
+
+        <com.duoduo.duoduocampus.views.HomeTabView
+            android:id="@+id/study_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingBottom="6dip"
+            android:paddingTop="6dip"
+            app:animation="true"
+            app:defaultColor="@color/grey_d2"
+            app:gapWidth="50dip"
+            app:lineBeyond="5dp"
+            app:lineColor="@color/pink"
+            app:selectColor="@color/pink"
+            app:tabTextSize="16sp" />
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/text_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <com.duoduo.duoduocampus.views.MyViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_below="@id/header"
-        android:text="教学计划、课程表、作业安排"
-        android:textColor="@color/pink_l2"
-        android:textSize="@dimen/home_tab_text_size" />
-    
-    <ImageView
-        android:id="@+id/test_imageview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/text_profile"
-        />
+        android:layout_marginTop="0dip" />
 
 </RelativeLayout>
