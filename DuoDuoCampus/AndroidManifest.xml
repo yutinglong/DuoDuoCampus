@@ -36,7 +36,7 @@
         <activity android:name=".activity.TeacherActivity" />
         <activity android:name=".register.LoginActivity" />
         <activity android:name=".activity.ProfileSettingActivity" />
-
+        <activity android:name=".activity.AboutActivity" />
         <meta-data
             android:name="logger"
             android:value="true" /> <!-- 是否输出log -->

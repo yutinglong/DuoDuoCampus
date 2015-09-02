@@ -128,6 +128,19 @@ public class MobileUtil {
         return versionCode;
     }
     
+    public static String getVersionName() {
+    	String versionName = "";
+        
+        String packageName = BaseApplication.getInstance().getPackageName();
+        PackageInfo pm = null;
+        try {
+            pm = BaseApplication.getInstance().getPackageManager().getPackageInfo(packageName, PackageManager.GET_CONFIGURATIONS);
+            versionName = pm.versionName;
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return versionName;
+    }
     /**
      * 获取本应用的包名
      * @return

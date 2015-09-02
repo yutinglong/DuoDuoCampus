@@ -18,4 +18,10 @@
     <string name="study_teachplans">教学</string>
     <string name="study_courses">课程</string>
     <string name="study_homeworks">作业</string>
+    
+    <!-- 关于 -->
+    <string name="setting_about_copyright_part1">牛多多网络科技有限公司  版权所有</string>
+    <string name="setting_about_copyright_part2">Copyright © 2015 duoduo.com</string>
+    <string name="setting_about_copyright_part3">All Rights Reserved.</string>
+    <string name="setting_about_update">检查更新</string>
 </resources> 

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.duoduo.duoduocampus.DataCenter;
 import com.duoduo.duoduocampus.DuoDuoPrefences;
 import com.duoduo.duoduocampus.R;
+import com.duoduo.duoduocampus.activity.AboutActivity;
 import com.duoduo.duoduocampus.activity.ProfileSettingActivity;
 import com.duoduo.duoduocampus.api.BaseAPI;
 import com.duoduo.duoduocampus.model.DuoDuoUser;
@@ -32,6 +33,8 @@ public class ProfileSlideLayout extends RelativeLayout implements
 	private View mAddressView;
 	private TextView mCoinText;
 	private View mCoinView;
+	
+	private View mAboutView;
 
 	private Context context;
 
@@ -80,9 +83,11 @@ public class ProfileSlideLayout extends RelativeLayout implements
 		loginNameRedTip = (ImageView) view
 				.findViewById(R.id.login_name_red_tip);
 		mAddressView = view.findViewById(R.id.profile_login_address_text);
-		mCoinText = (TextView) view.findViewById(R.id.profile_login_coin_text);// 金币
+		mCoinText = (TextView) view.findViewById(R.id.profile_login_coin_text);
 		mCoinView = view.findViewById(R.id.profile_login_coin_layout);
 		layoutPurse = (OptionsItemView) view.findViewById(R.id.layout_purse);
+		
+		mAboutView = view.findViewById(R.id.layout_purse3);
 	}
 
 	private void initListener() {
@@ -92,6 +97,8 @@ public class ProfileSlideLayout extends RelativeLayout implements
 		findViewById(R.id.layout_purse).setOnClickListener(this);
 		findViewById(R.id.register_nologin).setOnClickListener(this);
 		findViewById(R.id.profile_login_coin_layout).setOnClickListener(this);
+		
+		mAboutView.setOnClickListener(this);
 	}
 
 	// 未登录状态
@@ -164,6 +171,10 @@ public class ProfileSlideLayout extends RelativeLayout implements
 			Intent settingProfile = new Intent(context,
 					ProfileSettingActivity.class);
 			context.startActivity(settingProfile);
+			break;
+		case R.id.layout_purse3:// 关于
+			Intent mAboutIntent = new Intent(context, AboutActivity.class);
+			context.startActivity(mAboutIntent);
 			break;
 		}
 	}
