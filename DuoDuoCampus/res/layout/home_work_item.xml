@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="55dp"
+    android:background="@color/white" >
+
+    <RelativeLayout
+        android:id="@+id/center_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_centerVertical="true" >
+
+        <TextView
+            android:id="@+id/new_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:gravity="top"
+            android:maxWidth="120dip"
+            android:singleLine="true"
+            android:text="标题"
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/datatime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/new_title"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dip"
+            android:layout_marginTop="10dp"
+            android:gravity="top"
+            android:text="时间"
+            android:textColor="@color/grey_d5"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/new_title"
+            android:layout_marginLeft="0dip"
+            android:layout_marginRight="15dip"
+            android:layout_marginTop="10dp"
+            android:gravity="bottom"
+            android:singleLine="true"
+            android:text="内容"
+            android:textColor="@color/grey_d3"
+            android:textSize="14sp" />
+        
+        
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/line"
+        style="@style/message_cutline"
+        android:layout_below="@id/center_layout"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+</RelativeLayout>

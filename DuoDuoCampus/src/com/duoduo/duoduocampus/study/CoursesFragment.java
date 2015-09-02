@@ -1,19 +1,41 @@
 package com.duoduo.duoduocampus.study;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.duoduo.duoduocampus.BaseFragment;
 import com.duoduo.duoduocampus.R;
+import com.duoduo.duoduocampus.adapter.CourseAdapter;
+import com.duoduo.duoduocampus.api.BaseAPI;
+import com.duoduo.duoduocampus.model.Course;
+import com.duoduo.duoduocampus.model.net.Courses;
+import com.duoduo.duoduocampus.utils.LogUtil;
 
+/**
+ * @title: CoursesFragment.java
+ * @description: 课程信息
+ * @company: 多多校园
+ * @author: 于庭龙
+ * @version: 1.0.0
+ * @created：2015年9月2日
+ */
 public class CoursesFragment extends BaseFragment implements OnClickListener {
+	private ListView mListView;
+	private CourseAdapter mAdapter;
+	private List<Course> dataList = new ArrayList<Course>();
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		onRefresh();
 	}
 
 	@Override
@@ -30,6 +52,10 @@ public class CoursesFragment extends BaseFragment implements OnClickListener {
 	}
 
 	private void initUI(final View view) {
+		mListView = (ListView) view.findViewById(R.id.main_course_list);
+
+		mAdapter = new CourseAdapter(getActivity(), dataList); 
+		mListView.setAdapter(mAdapter);
 	}
 
 	@Override
@@ -40,4 +66,43 @@ public class CoursesFragment extends BaseFragment implements OnClickListener {
 		}
 	}
 
+	
+	private void onRefresh() {
+		getTeachPlansData();
+	}
+	
+	private void getTeachPlansData() {
+		BaseAPI.getInstance().get(getActivity(), "courses", null,
+				new BaseAPI.RequestListener<Courses>() {
+					@Override
+					public void onStart(long requestId) {
+						super.onStart(requestId);
+					}
+
+					@Override
+					public void onCompleted(Courses result) {
+						LogUtil.d("YTL", "onCompleted : " + result);
+						if (result != null) {
+							if (result.items.size() > 0) {
+								dataList.clear();
+								for (Course mCourse : result.items) {
+									dataList.add(mCourse);
+								}
+							} else {
+
+							}
+							if (mAdapter != null) {
+								mAdapter.notifyDataSetChanged();
+							}
+						} else {
+						}
+					}
+
+					@Override
+					public void onException(int status, Courses result,
+							String error) {
+						LogUtil.d("YTL", "onException : " + result + "");
+					}
+				});
+	}
 }
