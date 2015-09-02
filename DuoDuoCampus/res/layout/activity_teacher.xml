@@ -4,20 +4,48 @@
     android:layout_height="match_parent"
     android:background="@color/white" >
 
-    <TextView
-        android:id="@+id/text_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="教室"
-        android:textColor="@color/pink_l2"
-        android:textSize="@dimen/home_tab_text_size" />
+    <RelativeLayout
+        android:id="@+id/header"
+        style="@style/mainHeader" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="教师"
+            android:textColor="#80737B"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/iv_slidebar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+            android:src="@drawable/index_icon_menu" />
+        
+    </RelativeLayout>
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/main_teacher_list"
+        android:layout_below="@id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="7dp"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:fastScrollEnabled="true"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:smoothScrollbar="true" />
     
-    <ImageView
-        android:id="@+id/test_imageview"
+    
+    <com.duoduo.duoduocampus.views.CustomPageLoading
+        android:id="@+id/loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_profile"
-        android:background="@drawable/ic_launcher"
-        />
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
 
 </RelativeLayout>
