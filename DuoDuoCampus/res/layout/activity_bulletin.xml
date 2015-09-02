@@ -47,6 +47,11 @@
         android:scrollbars="none" >
     </ListView>
     
-
+    <com.duoduo.duoduocampus.views.CustomPageLoading
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
 
 </RelativeLayout>

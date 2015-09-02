@@ -28,9 +28,11 @@ import com.duoduo.duoduocampus.utils.LogUtil;
 public class BulletinActivity extends BaseActivity implements OnClickListener {
 	private ListView mListView;
 	private NewsListAdapter mAdapter;
+	private List<News> dataList = new ArrayList<News>();
+	
 	private View mView;
 	private View mRefresh;
-	private List<News> dataList = new ArrayList<News>();
+	private View mLoadingView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,8 @@ public class BulletinActivity extends BaseActivity implements OnClickListener {
 	}
 
 	private void initView() {
+		mLoadingView = findViewById(R.id.loading);
+		
 		mListView = (ListView) findViewById(R.id.main_new_list);
 		mRefresh = findViewById(R.id.tv_refresh);
 		mView = findViewById(R.id.iv_slidebar);
@@ -74,6 +78,8 @@ public class BulletinActivity extends BaseActivity implements OnClickListener {
 					@Override
 					public void onCompleted(NewModel result) {
 						LogUtil.d("YTL", "onCompleted : " + result);
+						
+						hideLoadingView();
 						if (result != null) {
 							if (result.items.size() > 0) {
 								dataList.clear();
@@ -107,14 +113,23 @@ public class BulletinActivity extends BaseActivity implements OnClickListener {
 					public void onException(int status, NewModel result,
 							String error) {
 						LogUtil.d("YTL", "onException : " + result + "");
+						hideLoadingView();
 					}
 				});
 	}
 
 	private void onRefresh() {
+		mLoadingView.setVisibility(View.VISIBLE);
+		mListView.setVisibility(View.GONE);
+		
 		getNewsData();
 	}
 
+    private void hideLoadingView() {
+    	mListView.setVisibility(View.VISIBLE);
+    	mLoadingView.setVisibility(View.GONE);
+    }
+	
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
