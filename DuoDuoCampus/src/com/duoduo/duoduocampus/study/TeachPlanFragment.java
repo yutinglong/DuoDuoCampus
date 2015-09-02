@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.duoduo.duoduocampus.BaseFragment;
 import com.duoduo.duoduocampus.R;
@@ -17,9 +16,12 @@ import com.duoduo.duoduocampus.api.BaseAPI;
 import com.duoduo.duoduocampus.model.TeachPlan;
 import com.duoduo.duoduocampus.model.net.TeacherPlans;
 import com.duoduo.duoduocampus.utils.LogUtil;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
-public class TeachPlanFragment extends BaseFragment implements OnClickListener {
-	private ListView mListView;
+public class TeachPlanFragment extends BaseFragment implements OnClickListener, OnRefreshListener {
+	private PullToRefreshListView mPullRefreshListView;
 	private TeachPlanAdapter mAdapter;
 	private List<TeachPlan> dataList = new ArrayList<TeachPlan>();
 	
@@ -27,7 +29,7 @@ public class TeachPlanFragment extends BaseFragment implements OnClickListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		onRefresh();
+		onRefresh(null);
 	}
 
 	@Override
@@ -37,10 +39,6 @@ public class TeachPlanFragment extends BaseFragment implements OnClickListener {
 		initUI(view);
 		
 		return view;
-	}
-	
-	private void onRefresh() {
-		getTeachPlansData();
 	}
 	
 	private void getTeachPlansData() {
@@ -54,6 +52,8 @@ public class TeachPlanFragment extends BaseFragment implements OnClickListener {
 					@Override
 					public void onCompleted(TeacherPlans result) {
 						LogUtil.d("YTL", "onCompleted : " + result);
+						mPullRefreshListView.onRefreshComplete();
+						
 						if (result != null) {
 							if (result.items.size() > 0) {
 								dataList.clear();
@@ -74,6 +74,8 @@ public class TeachPlanFragment extends BaseFragment implements OnClickListener {
 					public void onException(int status, TeacherPlans result,
 							String error) {
 						LogUtil.d("YTL", "onException : " + result + "");
+						
+						mPullRefreshListView.onRefreshComplete();
 					}
 				});
 	}
@@ -84,10 +86,12 @@ public class TeachPlanFragment extends BaseFragment implements OnClickListener {
 	}
 
 	private void initUI(final View view) {
-		mListView = (ListView) view.findViewById(R.id.main_teachplan_list);
+		mPullRefreshListView = (PullToRefreshListView) view.findViewById(R.id.main_teachplan_list);
 		
 		mAdapter = new TeachPlanAdapter(getActivity(), dataList); 
-		mListView.setAdapter(mAdapter);
+		mPullRefreshListView.setAdapter(mAdapter);
+		
+		mPullRefreshListView.setOnRefreshListener(this);
 	}
 
 	@Override
@@ -96,6 +100,11 @@ public class TeachPlanFragment extends BaseFragment implements OnClickListener {
 		case R.id.btn_login:
 			break;
 		}
+	}
+
+	@Override
+	public void onRefresh(PullToRefreshBase refreshView) {
+		getTeachPlansData();
 	}
 
 }

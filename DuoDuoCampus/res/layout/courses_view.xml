@@ -4,16 +4,16 @@
     android:layout_height="fill_parent"
     android:background="@color/grey_l1" >
 
-    <ListView
+	<com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/main_course_list"
+        android:layout_below="@id/header"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_marginTop="7dp"
+        android:cacheColorHint="#00000000"
         android:divider="@null"
-        android:layout_below="@id/header"
         android:fastScrollEnabled="true"
-        android:scrollbars="none" >
-    </ListView>
-
-
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:smoothScrollbar="true" />
 </RelativeLayout>

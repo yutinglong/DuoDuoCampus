@@ -28,7 +28,6 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
  * @created：2015年7月23日
  */
 public class BulletinActivity extends BaseActivity implements OnClickListener, OnRefreshListener{
-//	private ListView mListView;
 	private PullToRefreshListView mPullRefreshListView;
 	private NewsListAdapter mAdapter;
 	private List<News> dataList = new ArrayList<News>();

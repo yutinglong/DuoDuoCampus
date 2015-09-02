@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.duoduo.duoduocampus.BaseFragment;
 import com.duoduo.duoduocampus.R;
@@ -17,9 +16,12 @@ import com.duoduo.duoduocampus.api.BaseAPI;
 import com.duoduo.duoduocampus.model.HomeWork;
 import com.duoduo.duoduocampus.model.net.HomeWorks;
 import com.duoduo.duoduocampus.utils.LogUtil;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
-public class HomeWorkFragment extends BaseFragment implements OnClickListener {
-	private ListView mListView;
+public class HomeWorkFragment extends BaseFragment implements OnClickListener, OnRefreshListener {
+	private PullToRefreshListView mPullRefreshListView;
 	private HomeWorkAdapter mAdapter;
 	private List<HomeWork> dataList = new ArrayList<HomeWork>();
 	
@@ -27,7 +29,7 @@ public class HomeWorkFragment extends BaseFragment implements OnClickListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		onRefresh();
+		onRefresh(null);
 	}
 
 	@Override
@@ -44,10 +46,11 @@ public class HomeWorkFragment extends BaseFragment implements OnClickListener {
 	}
 
 	private void initUI(final View view) {
-		mListView = (ListView) view.findViewById(R.id.main_homework_list);
+		mPullRefreshListView = (PullToRefreshListView) view.findViewById(R.id.main_homework_list);
 		
 		mAdapter = new HomeWorkAdapter(getActivity(), dataList); 
-		mListView.setAdapter(mAdapter);
+		mPullRefreshListView.setAdapter(mAdapter);
+		mPullRefreshListView.setOnRefreshListener(this);
 	}
 
 	@Override
@@ -58,10 +61,6 @@ public class HomeWorkFragment extends BaseFragment implements OnClickListener {
 		}
 	}
 
-	private void onRefresh() {
-		getHomeWorksData();
-	}
-	
 	private void getHomeWorksData() {
 		BaseAPI.getInstance().get(getActivity(), "homeworks", null,
 				new BaseAPI.RequestListener<HomeWorks>() {
@@ -73,6 +72,8 @@ public class HomeWorkFragment extends BaseFragment implements OnClickListener {
 					@Override
 					public void onCompleted(HomeWorks result) {
 						LogUtil.d("YTL", "onCompleted : " + result);
+						
+						mPullRefreshListView.onRefreshComplete();
 						if (result != null) {
 							if (result.items.size() > 0) {
 								dataList.clear();
@@ -93,7 +94,14 @@ public class HomeWorkFragment extends BaseFragment implements OnClickListener {
 					public void onException(int status, HomeWorks result,
 							String error) {
 						LogUtil.d("YTL", "onException : " + result + "");
+						
+						mPullRefreshListView.onRefreshComplete();
 					}
 				});
+	}
+
+	@Override
+	public void onRefresh(PullToRefreshBase refreshView) {
+		getHomeWorksData();		
 	}
 }
