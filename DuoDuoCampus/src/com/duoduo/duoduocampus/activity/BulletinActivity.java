@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.ListView;
 
 import com.duoduo.duoduocampus.R;
 import com.duoduo.duoduocampus.adapter.NewsListAdapter;
@@ -16,6 +15,9 @@ import com.duoduo.duoduocampus.model.News;
 import com.duoduo.duoduocampus.model.net.NewModel;
 import com.duoduo.duoduocampus.msg.Messenger;
 import com.duoduo.duoduocampus.utils.LogUtil;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 /**
  * @title: BulletinActivity.java
@@ -25,8 +27,9 @@ import com.duoduo.duoduocampus.utils.LogUtil;
  * @version: 1.0.0
  * @created：2015年7月23日
  */
-public class BulletinActivity extends BaseActivity implements OnClickListener {
-	private ListView mListView;
+public class BulletinActivity extends BaseActivity implements OnClickListener, OnRefreshListener{
+//	private ListView mListView;
+	private PullToRefreshListView mPullRefreshListView;
 	private NewsListAdapter mAdapter;
 	private List<News> dataList = new ArrayList<News>();
 	
@@ -43,13 +46,15 @@ public class BulletinActivity extends BaseActivity implements OnClickListener {
 
 		initView();
 
-		onRefresh();
+		mLoadingView.setVisibility(View.VISIBLE);
+		mPullRefreshListView.setVisibility(View.GONE);
+		onRefresh(null);
 	}
 
 	private void initView() {
 		mLoadingView = findViewById(R.id.loading);
 		
-		mListView = (ListView) findViewById(R.id.main_new_list);
+		mPullRefreshListView = (PullToRefreshListView) findViewById(R.id.main_new_list);
 		mRefresh = findViewById(R.id.tv_refresh);
 		mView = findViewById(R.id.iv_slidebar);
 		
@@ -63,7 +68,8 @@ public class BulletinActivity extends BaseActivity implements OnClickListener {
 		});
 		
 		mAdapter = new NewsListAdapter(this, dataList); 
-		mListView.setAdapter(mAdapter);
+		mPullRefreshListView.setAdapter(mAdapter);
+		mPullRefreshListView.setOnRefreshListener(this);
 	}
 
 
@@ -78,6 +84,7 @@ public class BulletinActivity extends BaseActivity implements OnClickListener {
 					@Override
 					public void onCompleted(NewModel result) {
 						LogUtil.d("YTL", "onCompleted : " + result);
+						mPullRefreshListView.onRefreshComplete();
 						
 						hideLoadingView();
 						if (result != null) {
@@ -114,19 +121,13 @@ public class BulletinActivity extends BaseActivity implements OnClickListener {
 							String error) {
 						LogUtil.d("YTL", "onException : " + result + "");
 						hideLoadingView();
+						mPullRefreshListView.onRefreshComplete();
 					}
 				});
 	}
 
-	private void onRefresh() {
-		mLoadingView.setVisibility(View.VISIBLE);
-		mListView.setVisibility(View.GONE);
-		
-		getNewsData();
-	}
-
     private void hideLoadingView() {
-    	mListView.setVisibility(View.VISIBLE);
+    	mPullRefreshListView.setVisibility(View.VISIBLE);
     	mLoadingView.setVisibility(View.GONE);
     }
 	
@@ -134,8 +135,13 @@ public class BulletinActivity extends BaseActivity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.tv_refresh:// 刷新
-			onRefresh();
+			onRefresh(null);
 			break;
 		}
+	}
+
+	@Override
+	public void onRefresh(PullToRefreshBase refreshView) {
+		getNewsData();		
 	}
 }
