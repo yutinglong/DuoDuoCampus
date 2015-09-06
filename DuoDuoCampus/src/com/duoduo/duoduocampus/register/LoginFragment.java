@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.webkit.WebView.FindListener;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -75,6 +76,8 @@ public class LoginFragment extends BaseFragment implements OnClickListener {
 		mEditTextPwd = (EditText) view.findViewById(R.id.login_pwd);
 		mEditTextPwd.setImeOptions(EditorInfo.IME_ACTION_GO);
 		mEditTextPwd.setOnEditorActionListener(editorActionListener);
+		
+		view.findViewById(R.id.btn_forget).setOnClickListener(this);
 		
 		mEditTextUserName.setText("15212345678");
 		mEditTextPwd.setText("123456");
@@ -152,6 +155,9 @@ public class LoginFragment extends BaseFragment implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.btn_login:
 			login();
+			break;
+		case R.id.btn_forget:// 忘记密码
+			DToast.toastShort("功能待开发，敬请期待.");
 			break;
 		}
 	}

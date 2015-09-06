@@ -39,6 +39,7 @@
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".activity.ParentSentrustsActivity" />
         <activity android:name=".activity.StudentAppraisalsActivity" />
+        <activity android:name=".activity.ExamResultsActivity" />
         
         <meta-data
             android:name="logger"

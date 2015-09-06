@@ -15,6 +15,7 @@ import com.duoduo.duoduocampus.DataCenter;
 import com.duoduo.duoduocampus.DuoDuoPrefences;
 import com.duoduo.duoduocampus.R;
 import com.duoduo.duoduocampus.activity.AboutActivity;
+import com.duoduo.duoduocampus.activity.ExamResultsActivity;
 import com.duoduo.duoduocampus.activity.ParentSentrustsActivity;
 import com.duoduo.duoduocampus.activity.ProfileSettingActivity;
 import com.duoduo.duoduocampus.activity.StudentAppraisalsActivity;
@@ -100,6 +101,7 @@ public class ProfileSlideLayout extends RelativeLayout implements
 		findViewById(R.id.register_nologin).setOnClickListener(this);
 		findViewById(R.id.profile_login_coin_layout).setOnClickListener(this);
 		
+		findViewById(R.id.layout_purse).setOnClickListener(this);
 		findViewById(R.id.layout_purse1).setOnClickListener(this);
 		findViewById(R.id.layout_purse2).setOnClickListener(this);
 		mAboutView.setOnClickListener(this);
@@ -187,6 +189,10 @@ public class ProfileSlideLayout extends RelativeLayout implements
 		case R.id.layout_purse1:// 在校情况
 			Intent mStudengAppraisalIntent = new Intent(context, StudentAppraisalsActivity.class);
 			context.startActivity(mStudengAppraisalIntent);
+			break;
+		case R.id.layout_purse:// 成绩查询
+			Intent mExamResultsIntent = new Intent(context, ExamResultsActivity.class);
+			context.startActivity(mExamResultsIntent);
 			break;
 			
 			

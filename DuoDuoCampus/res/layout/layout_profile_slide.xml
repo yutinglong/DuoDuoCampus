@@ -208,7 +208,7 @@
                     app:optionArray="@drawable/circle_info_arrow"
                     app:optionContentColor="@color/pink_t80"
                     app:optionImage="@drawable/me_ico_site"
-                    app:optionTitle="成绩查询"
+                    app:optionTitle="在校成绩"
                     app:optionTitleSize="14" />
 
                 <com.duoduo.duoduocampus.profile.views.OptionsItemView

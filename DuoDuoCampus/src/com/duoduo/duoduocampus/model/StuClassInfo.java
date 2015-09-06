@@ -12,5 +12,8 @@ public class StuClassInfo {
 	
 	@SerializedName("school")	
 	public School school;
+	
+	@SerializedName("teacher")	
+	public Teacher teacher;
 }
 
