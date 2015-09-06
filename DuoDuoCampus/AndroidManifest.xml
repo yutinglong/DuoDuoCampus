@@ -37,6 +37,8 @@
         <activity android:name=".register.LoginActivity" />
         <activity android:name=".activity.ProfileSettingActivity" />
         <activity android:name=".activity.AboutActivity" />
+        <activity android:name=".activity.ParentSentrustsActivity" />
+        
         <meta-data
             android:name="logger"
             android:value="true" /> <!-- 是否输出log -->

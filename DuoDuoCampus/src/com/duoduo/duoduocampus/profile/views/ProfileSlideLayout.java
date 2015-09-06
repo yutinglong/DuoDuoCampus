@@ -15,6 +15,7 @@ import com.duoduo.duoduocampus.DataCenter;
 import com.duoduo.duoduocampus.DuoDuoPrefences;
 import com.duoduo.duoduocampus.R;
 import com.duoduo.duoduocampus.activity.AboutActivity;
+import com.duoduo.duoduocampus.activity.ParentSentrustsActivity;
 import com.duoduo.duoduocampus.activity.ProfileSettingActivity;
 import com.duoduo.duoduocampus.api.BaseAPI;
 import com.duoduo.duoduocampus.model.DuoDuoUser;
@@ -98,6 +99,7 @@ public class ProfileSlideLayout extends RelativeLayout implements
 		findViewById(R.id.register_nologin).setOnClickListener(this);
 		findViewById(R.id.profile_login_coin_layout).setOnClickListener(this);
 		
+		findViewById(R.id.layout_purse2).setOnClickListener(this);
 		mAboutView.setOnClickListener(this);
 	}
 
@@ -176,6 +178,11 @@ public class ProfileSlideLayout extends RelativeLayout implements
 			Intent mAboutIntent = new Intent(context, AboutActivity.class);
 			context.startActivity(mAboutIntent);
 			break;
+		case R.id.layout_purse2:// 家长嘱托
+			Intent mParentSentrustsIntent = new Intent(context, ParentSentrustsActivity.class);
+			context.startActivity(mParentSentrustsIntent);
+			break;
+			
 		}
 	}
 }
