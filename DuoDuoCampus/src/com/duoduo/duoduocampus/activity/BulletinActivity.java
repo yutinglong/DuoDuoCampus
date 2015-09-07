@@ -3,25 +3,28 @@ package com.duoduo.duoduocampus.activity;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.content.Context;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.TextView;
 
 import com.duoduo.duoduocampus.R;
 import com.duoduo.duoduocampus.adapter.NewsListAdapter;
 import com.duoduo.duoduocampus.api.BaseAPI;
+import com.duoduo.duoduocampus.api.BaseAPI.RequestState;
 import com.duoduo.duoduocampus.model.News;
 import com.duoduo.duoduocampus.model.net.NewModel;
 import com.duoduo.duoduocampus.msg.Messenger;
 import com.duoduo.duoduocampus.system.status.NetStatusReceiver;
 import com.duoduo.duoduocampus.utils.LogUtil;
+import com.handmark.pulltorefresh.library.PullRefreshListView;
+import com.handmark.pulltorefresh.library.PullRefreshListView.OnLoadMoreListener;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 /**
  * @title: BulletinActivity.java
@@ -31,9 +34,14 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
  * @version: 1.0.0
  * @created：2015年7月23日
  */
-public class BulletinActivity extends BaseActivity implements OnClickListener, OnRefreshListener {
-	private PullToRefreshListView mPullRefreshListView;
+public class BulletinActivity extends BaseActivity implements OnClickListener, OnRefreshListener , OnLoadMoreListener{
+	private static final int DEFAULT_PAGE_SIZE = 30;
+	
+	private PullRefreshListView mPullRefreshListView;
 	private NewsListAdapter mAdapter;
+	
+	private RequestState mNewsState = new RequestState("news");
+	
 	private List<News> dataList = new ArrayList<News>();
 	
 	private View mView;
@@ -57,7 +65,7 @@ public class BulletinActivity extends BaseActivity implements OnClickListener, O
     		netErrorView.setVisibility(View.VISIBLE);
     	}
     	
-		if (netErrorView.getVisibility() == View.VISIBLE) {
+		if (netErrorView.getVisibility() != View.VISIBLE) {
 			onRefresh(null);
 		}
 	}
@@ -68,7 +76,7 @@ public class BulletinActivity extends BaseActivity implements OnClickListener, O
 		
 		mLoadingView = findViewById(R.id.loading);
 		
-		mPullRefreshListView = (PullToRefreshListView) findViewById(R.id.main_new_list);
+		mPullRefreshListView = (PullRefreshListView) findViewById(R.id.main_new_list);
 		mRefresh = findViewById(R.id.tv_refresh);
 		mView = findViewById(R.id.iv_slidebar);
 		
@@ -84,14 +92,19 @@ public class BulletinActivity extends BaseActivity implements OnClickListener, O
 		mAdapter = new NewsListAdapter(this, dataList); 
 		mPullRefreshListView.setAdapter(mAdapter);
 		mPullRefreshListView.setOnRefreshListener(this);
+		mPullRefreshListView.setOnLoadListener(this);
 		
 		LayoutInflater inflater = LayoutInflater.from(this); 
         View tempView = inflater.inflate(R.layout.empty_textview, null);
         mPullRefreshListView.setEmptyView(tempView);
 	}
 
-
-	private void getNewsData() {
+	private int count = 0;
+	private void getNewsData(int offset, int limit) {
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+//		params.add(new BasicNameValuePair("offset", String.valueOf(offset)));
+//		params.add(new BasicNameValuePair("limit", String.valueOf(limit)));
+		
 		BaseAPI.getInstance().get(this, "news", null,
 				new BaseAPI.RequestListener<NewModel>() {
 					@Override
@@ -102,17 +115,23 @@ public class BulletinActivity extends BaseActivity implements OnClickListener, O
 					@Override
 					public void onCompleted(NewModel result) {
 						LogUtil.d("YTL", "onCompleted : " + result);
+						if (count >= 2) {
+							result.hasMore = false;
+						}
+						else {
+							result.hasMore = true;
+						}
+						count++;
+						
+						
+						
+						
 						mPullRefreshListView.onRefreshComplete();
 						
 						hideLoadingView();
 						if (result != null) {
 							if (result.items.size() > 0) {
-								dataList.clear();
 								for (News mNews : result.items) {
-									dataList.add(mNews);
-									dataList.add(mNews);
-									dataList.add(mNews);
-									dataList.add(mNews);
 									dataList.add(mNews);
 									dataList.add(mNews);
 									dataList.add(mNews);
@@ -133,7 +152,16 @@ public class BulletinActivity extends BaseActivity implements OnClickListener, O
 						} else {
 						}
 						
+						mNewsState.offset = result.offset;
+						mNewsState.isBottom = !result.hasMore;
 						netErrorView.setVisibility(View.GONE);
+						
+						if (!mNewsState.isBottom) {
+							mPullRefreshListView.setCanLoadMore(true);
+						}
+						else {
+							mPullRefreshListView.setCanLoadMore(false);
+						}
 					}
 
 					@Override
@@ -174,6 +202,21 @@ public class BulletinActivity extends BaseActivity implements OnClickListener, O
     
 	@Override
 	public void onRefresh(PullToRefreshBase refreshView) {
-		getNewsData();		
+		mNewsState.isBottom = false;
+		mNewsState.isRefresh = true;
+		mNewsState.offset = 0;
+		
+		count = 0;
+		dataList.clear();
+		getNewsData(0, DEFAULT_PAGE_SIZE);		
+	}
+
+	@Override
+	public void onLoadMore() {
+		if (mNewsState.isBottom) {
+			return;
+		}
+		
+		getNewsData(mNewsState.offset, DEFAULT_PAGE_SIZE);
 	}
 }
