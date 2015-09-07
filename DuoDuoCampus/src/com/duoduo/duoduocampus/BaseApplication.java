@@ -1,6 +1,7 @@
 
 package com.duoduo.duoduocampus;
 
+import android.app.ActivityManager;
 import android.app.Application;
 import android.app.Service;
 import android.content.Context;
@@ -20,6 +21,7 @@ import com.duoduo.duoduocampus.system.status.ExternalStorageReceiver;
 import com.duoduo.duoduocampus.system.status.NetStatusReceiver;
 import com.duoduo.duoduocampus.utils.ChannelUtil;
 import com.duoduo.duoduocampus.utils.Constants;
+import com.duoduo.duoduocampus.utils.LocalApiUtil;
 import com.duoduo.duoduocampus.utils.LogUtil;
 import com.duoduo.duoduocampus.utils.MobileUtil;
 
@@ -64,12 +66,20 @@ public class BaseApplication extends Application {
         
         imei = MobileUtil.getDeviceId();
 		mac = MobileUtil.getMacAddress();
+		
+		initLocalAPI();
         
         LogUtil.d(LogUtil.YTL_TAG, "Log存储的位置为: " + Constants.LOG_PATH);
     }
 
     public static BaseApplication getInstance() {
         return instance;
+    }
+    
+    private void initLocalAPI() {
+        if (LogUtil.isDebug() && "com.duoduo.duoduocampus".equals(getCurProcessName(getApplicationContext()))) {
+            LocalApiUtil.initLocalApi();
+        }
     }
 
     /**
@@ -176,5 +186,24 @@ public class BaseApplication extends Application {
     
     public void runOnUIThread(Runnable r, long delayMillis) {
     	handler.postDelayed(r, delayMillis);
+    }
+    
+    /**
+     * 获取当前进程名字
+     *
+     * @param context
+     * @return
+     */
+    public static String getCurProcessName(Context context) {
+        int pid = android.os.Process.myPid();
+        ActivityManager mActivityManager = (ActivityManager) context
+                .getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningAppProcessInfo appProcess : mActivityManager
+                .getRunningAppProcesses()) {
+            if (appProcess.pid == pid) {
+                return appProcess.processName;
+            }
+        }
+        return null;
     }
 }

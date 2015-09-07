@@ -4,22 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.duoduo.duoduocampus.R;
 import com.duoduo.duoduocampus.model.News;
+import com.duoduo.duoduocampus.utils.NetImageUtil;
+import com.duoduo.duoduocampus.utils.TileDrawable;
 
 public class NewsListAdapter extends BaseAdapter {
 	private LayoutInflater mInflater = null;
 	private List<News> data = new ArrayList<News>();
+	private Context mContext;
 
 	public NewsListAdapter(Context context, List<News> dataList) {
 		this.mInflater = LayoutInflater.from(context);
 		this.data = dataList;
+		
+		mContext = context.getApplicationContext();
 	}
 
 	@Override
@@ -47,13 +54,26 @@ public class NewsListAdapter extends BaseAdapter {
 			holder.datatime = (TextView) convertView
 					.findViewById(R.id.datatime);
 			holder.content = (TextView) convertView.findViewById(R.id.content);
+			holder.newImg = (ImageView) convertView.findViewById(R.id.new_img);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		holder.title.setText((String) data.get(position).newTitle);
-		holder.datatime.setText((String) data.get(position).newDate.substring(0, 10));
-		holder.content.setText((String) data.get(position).newContent);
+		
+		News mNews = data.get(position);
+		
+		holder.title.setText((String) mNews.newTitle);
+		holder.datatime.setText((String) mNews.newDate.substring(0, 10));
+		holder.content.setText((String) mNews.newContent);
+		
+		if (!TextUtils.isEmpty(mNews.imgUrl)) {
+			NetImageUtil.with_load_info(mContext, mNews.imgUrl, holder.newImg);
+			holder.newImg.setBackgroundDrawable(new TileDrawable(mContext));
+			holder.newImg.setVisibility(View.VISIBLE);
+		}
+		else {
+			holder.newImg.setVisibility(View.GONE);
+		}
 
 		return convertView;
 	}
@@ -63,6 +83,7 @@ public class NewsListAdapter extends BaseAdapter {
 		public TextView title;
 		public TextView datatime;
 		public TextView content;
+		public ImageView newImg;
 	}
 
 }

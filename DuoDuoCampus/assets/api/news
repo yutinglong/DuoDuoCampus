@@ -1,0 +1,117 @@
+{
+	"items" : [
+		{
+			"newId" : 1,
+			"newTitle" : "官方:达赖认定\"班禅\"非法",
+			"newDate" : "2015-09-07T14:58:33.000",
+			"newContent" : "称不管达赖说什么，都无法否定中央对活佛转世认定权。",
+			"newType" : {
+				"typeId" : 1
+			},
+			"imgUrl" : "http://img4.cache.netease.com/3g/2015/9/7/2015090706311760252.jpg",
+			"newFor" : 1
+		},
+		{
+			"newId" : 2,
+			"newTitle" : "官方解读中秋节为何只放假2天",
+			"newDate" : "2015-09-07T13:05:11.000",
+			"newContent" : "若放假三天需连上9天班,休假总天数未减少。",
+			"newType" : {
+				"typeId" : 2
+			},
+			"newFor" : 1
+		},
+		{
+			"newId" : 3,
+			"newTitle" : "宪法草案遭否致泰大选再延后",
+			"newDate" : "2015-09-06T13:05:11.000",
+			"newContent" : "泰国军政府被指暗箱操作，以尽量延长其掌权时间。",
+			"newType" : {
+				"typeId" : 2
+			},
+			"imgUrl" : "http://img4.cache.netease.com/3g/2015/9/7/20150907105302405c6.jpg",
+			"newFor" : 1
+		},
+		{
+			"newId" : 4,
+			"newTitle" : "女子收假逮捕通知书被骗50万",
+			"newDate" : "2015-09-06T13:05:11.000",
+			"newContent" : "发现通知书上有其照片，还有身份证号，汇钱\"洗脱罪名\"",
+			"newType" : {
+				"typeId" : 2
+			},
+			"imgUrl" : "http://img1.cache.netease.com/3g/2015/9/7/20150907080006b8cbd.jpg",
+			"newFor" : 1
+		},
+		{
+			"newId" : 5,
+			"newTitle" : "郑州男子醉驾撞飞两少女20米",
+			"newDate" : "2015-09-05T13:05:11.000",
+			"newContent" : "一名女孩落地后衣服被撞飞仅剩内衣，昏迷不醒。",
+			"newType" : {
+				"typeId" : 2
+			},
+			"imgUrl" : "http://img6.cache.netease.com/3g/2015/9/7/2015090707555179a2b.jpg",
+			"newFor" : 1
+		},
+		{
+			"newId" : 6,
+			"newTitle" : "香港再次发起\"反水货客\"行动",
+			"newDate" : "2015-09-04T13:05:11.000",
+			"newContent" : "香港官员称这种行为很不负责，将影响经济和旅游业发展。",
+			"newType" : {
+				"typeId" : 2
+			},
+			"imgUrl" : "http://img2.cache.netease.com/3g/2015/9/7/2015090706151405f55.jpg",
+			"newFor" : 1
+		},
+		{
+			"newId" : 7,
+			"newTitle" : "中传受害女生家属求嫌犯死刑",
+			"newDate" : "2015-09-01T13:05:11.000",
+			"newContent" : "女生被同学强奸未遂杀害，家属已聘李天一案律师。",
+			"newType" : {
+				"typeId" : 2
+			},
+			"imgUrl" : "http://img5.cache.netease.com/3g/2015/9/7/201509070546597745d.jpg",
+			"newFor" : 1
+		},
+		{
+			"newId" : 8,
+			"newTitle" : "山东辞职市长或任职深圳公司",
+			"newDate" : "2015-09-01T13:05:11.000",
+			"newContent" : "梅永红在任市长期间曾多次与这家公司进行过接触。",
+			"newType" : {
+				"typeId" : 2
+			},
+			"imgUrl" : "http://img3.cache.netease.com/3g/2015/9/7/20150907045321e539f.jpg",
+			"newFor" : 1
+		},
+		{
+			"newId" : 9,
+			"newTitle" : "证监会将研制指数熔断机制",
+			"newDate" : "2015-09-01T13:05:11.000",
+			"newContent" : "称股市泡沫已得到很大释放，异常波动时政府会出手。",
+			"newType" : {
+				"typeId" : 2
+			},
+			"imgUrl" : "http://img3.cache.netease.com/3g/2015/9/6/20150906221744daffa.jpg",
+			"newFor" : 1
+		},
+		{
+			"newId" : 10,
+			"newTitle" : "洪秀柱:让陆配4年拿到身份证",
+			"newDate" : "2015-09-01T13:05:11.000",
+			"newContent" : "称将照顾好新住民，想办法认证赴台学生的\"母国学历\"",
+			"newType" : {
+				"typeId" : 2
+			},
+			"imgUrl" : "http://img1.cache.netease.com/3g/2015/9/6/2015090623485852581.jpg",
+			"newFor" : 1
+		}
+	],
+	"hasMore" : false,
+	"limit" : 0,
+	"offset" : 0,
+	"totalCount" : 0
+}

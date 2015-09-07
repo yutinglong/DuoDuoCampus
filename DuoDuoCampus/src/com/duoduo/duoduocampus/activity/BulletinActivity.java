@@ -133,15 +133,6 @@ public class BulletinActivity extends BaseActivity implements OnClickListener, O
 							if (result.items.size() > 0) {
 								for (News mNews : result.items) {
 									dataList.add(mNews);
-									dataList.add(mNews);
-									dataList.add(mNews);
-									dataList.add(mNews);
-									dataList.add(mNews);
-									dataList.add(mNews);
-									dataList.add(mNews);
-									dataList.add(mNews);
-									dataList.add(mNews);
-									dataList.add(mNews);
 								}
 							} else {
 

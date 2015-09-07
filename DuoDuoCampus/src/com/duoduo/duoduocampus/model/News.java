@@ -21,4 +21,7 @@ public class News {
 	
 	@SerializedName("newType")
 	public NewType newType;
+	
+	@SerializedName("imgUrl")
+	public String imgUrl;
 }

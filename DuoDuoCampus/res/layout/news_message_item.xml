@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="55dp"
+    android:layout_height="130dp"
+    android:paddingTop="7dp"
+    android:paddingBottom="7dp"
     android:background="@color/white" >
+
+    <ImageView
+        android:id="@+id/new_img"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop"
+        android:src="@drawable/tile_default_bg" />
 
     <RelativeLayout
         android:id="@+id/center_layout"
+        android:layout_toRightOf="@id/new_img"
+        android:layout_marginLeft="5dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:layout_centerVertical="true" >
+        android:layout_centerVertical="true"
+        android:padding="5dp" >
 
         <TextView
             android:id="@+id/new_title"
@@ -17,24 +31,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:gravity="top"
-            android:maxWidth="120dip"
+            android:maxWidth="250dip"
             android:singleLine="true"
             android:text="标题"
             android:textColor="@color/grey_d1"
             android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/datatime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@id/new_title"
-            android:layout_marginRight="15dip"
-            android:layout_marginTop="2dp"
-            android:gravity="top"
-            android:text="时间"
-            android:textColor="@color/grey_d5"
-            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/content"
@@ -45,12 +47,23 @@
             android:layout_marginRight="15dip"
             android:layout_marginTop="10dp"
             android:gravity="bottom"
-            android:singleLine="true"
+            android:maxLines="2"
             android:text="内容"
-            android:textColor="@color/grey_d3"
+            android:textColor="@color/grey_d6"
             android:textSize="14sp" />
         
-        
+        <TextView
+            android:id="@+id/datatime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@id/content"
+            android:layout_marginRight="10dip"
+            android:layout_marginTop="2dp"
+            android:gravity="top"
+            android:text="时间"
+            android:textColor="@color/grey_d5"
+            android:textSize="12sp" />
     </RelativeLayout>
 
     <View
