@@ -31,14 +31,14 @@
                     android:visibility="gone" 
                     >
 
-                    <ImageView
+                    <com.duoduo.duoduocampus.profile.views.RoundImageView
                         android:id="@+id/profile_login_round_pic"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_alignParentBottom="true"
                         android:layout_marginBottom="5dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/profile_icon_noimage" />
+                        android:src="@drawable/head_default_big" />
 
                     <ImageView
                         android:id="@+id/iv_daren"
@@ -110,7 +110,7 @@
                             android:clickable="true"
                             android:drawablePadding="5dp"
                             android:gravity="center_vertical"
-                            android:text="我的收货地址"
+                            android:text="欢迎使用多多校园"
                             android:textColor="#999999"
                             android:textSize="12sp" />
 

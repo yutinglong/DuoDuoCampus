@@ -37,6 +37,14 @@ public class NetStatusReceiver extends BroadcastReceiver {
      * 当前网络的状态
      */
     public static int netStatus = 0;
+    
+    public static boolean isNetOk() {
+    	if (netStatus == 0) {
+    		return false;
+    	}
+    	
+    	return true;
+    }
 
     public void onReceive(Context context, Intent intent) {
         ConnectivityManager cm = (ConnectivityManager) context

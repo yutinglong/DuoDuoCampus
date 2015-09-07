@@ -3,10 +3,13 @@ package com.duoduo.duoduocampus.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.TextView;
 
 import com.duoduo.duoduocampus.R;
 import com.duoduo.duoduocampus.adapter.NewsListAdapter;
@@ -14,6 +17,7 @@ import com.duoduo.duoduocampus.api.BaseAPI;
 import com.duoduo.duoduocampus.model.News;
 import com.duoduo.duoduocampus.model.net.NewModel;
 import com.duoduo.duoduocampus.msg.Messenger;
+import com.duoduo.duoduocampus.system.status.NetStatusReceiver;
 import com.duoduo.duoduocampus.utils.LogUtil;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
@@ -36,6 +40,7 @@ public class BulletinActivity extends BaseActivity implements OnClickListener, O
 	private View mRefresh;
 	private View mLoadingView;
 
+	private View netErrorView;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,10 +52,20 @@ public class BulletinActivity extends BaseActivity implements OnClickListener, O
 
 		mLoadingView.setVisibility(View.VISIBLE);
 		mPullRefreshListView.setVisibility(View.GONE);
-		onRefresh(null);
+		
+    	if (!NetStatusReceiver.isNetOk()) {
+    		netErrorView.setVisibility(View.VISIBLE);
+    	}
+    	
+		if (netErrorView.getVisibility() == View.VISIBLE) {
+			onRefresh(null);
+		}
 	}
 
 	private void initView() {
+		netErrorView = findViewById(R.id.neterror);
+		netErrorView.setOnClickListener(this);
+		
 		mLoadingView = findViewById(R.id.loading);
 		
 		mPullRefreshListView = (PullToRefreshListView) findViewById(R.id.main_new_list);
@@ -69,6 +84,10 @@ public class BulletinActivity extends BaseActivity implements OnClickListener, O
 		mAdapter = new NewsListAdapter(this, dataList); 
 		mPullRefreshListView.setAdapter(mAdapter);
 		mPullRefreshListView.setOnRefreshListener(this);
+		
+		LayoutInflater inflater = LayoutInflater.from(this); 
+        View tempView = inflater.inflate(R.layout.empty_textview, null);
+        mPullRefreshListView.setEmptyView(tempView);
 	}
 
 
@@ -113,6 +132,8 @@ public class BulletinActivity extends BaseActivity implements OnClickListener, O
 							}
 						} else {
 						}
+						
+						netErrorView.setVisibility(View.GONE);
 					}
 
 					@Override
@@ -136,6 +157,9 @@ public class BulletinActivity extends BaseActivity implements OnClickListener, O
 		case R.id.tv_refresh:// 刷新
 			toTop();
 			mPullRefreshListView.setRefreshing(false);
+			break;
+		case R.id.neterror:
+			onRefresh(null);
 			break;
 		}
 	}

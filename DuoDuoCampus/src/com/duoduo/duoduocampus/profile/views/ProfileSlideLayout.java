@@ -26,7 +26,7 @@ import com.duoduo.duoduocampus.register.LoginActivity;
 public class ProfileSlideLayout extends RelativeLayout implements
 		OnClickListener {
 
-	private ImageView myPicture;
+	private RoundImageView myPicture;
 	private OptionsItemView layoutPurse;
 	private TextView myNameWithVip;
 	private ImageView loginNameRedTip;
@@ -78,7 +78,7 @@ public class ProfileSlideLayout extends RelativeLayout implements
 	}
 
 	private void initView(View view) {
-		myPicture = (ImageView) view.findViewById(R.id.profile_login_round_pic);
+		myPicture = (RoundImageView) view.findViewById(R.id.profile_login_round_pic);
 		ivDaren = (ImageView) view.findViewById(R.id.iv_daren);
 		ivVip = (ImageView) view.findViewById(R.id.iv_vip);
 		iconImg = (ImageView) view.findViewById(R.id.icon_img);
@@ -138,6 +138,8 @@ public class ProfileSlideLayout extends RelativeLayout implements
 	private void refreshUserInfo() {
 		if (DataCenter.mDuoDuoUser != null) {
 			myNameWithVip.setText(DataCenter.mDuoDuoUser.realName);
+			
+			myPicture.setImageResource(R.drawable.head_default_big);
 		}
 	}
 	

@@ -1,6 +1,9 @@
 package com.duoduo.duoduocampus.activity;
 
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -12,6 +15,7 @@ import com.duoduo.duoduocampus.DataCenter;
 import com.duoduo.duoduocampus.DuoDuoPrefences;
 import com.duoduo.duoduocampus.R;
 import com.duoduo.duoduocampus.profile.views.MessageBoxDialog;
+import com.duoduo.duoduocampus.profile.views.RoundImageView;
 import com.duoduo.duoduocampus.utils.DToast;
 
 /**
@@ -25,6 +29,8 @@ public class ProfileSettingActivity extends BaseActivity implements
 	private TextView genderText;
 	
 	private TextView exitText;
+	
+	private RoundImageView mHeadviewPic;
 	
 	private Handler handler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
@@ -56,6 +62,7 @@ public class ProfileSettingActivity extends BaseActivity implements
 		nickNameText = (TextView) findViewById(R.id.setting_profile_nickname_tip);
 		genderText = (TextView) findViewById(R.id.setting_profile_gender_tip);
 		exitText = (TextView) findViewById(R.id.setting_profile_exit);
+		mHeadviewPic = (RoundImageView) findViewById(R.id.setting_profile_headview_pic);
 		
 		exitText.setOnClickListener(this);
 	}
@@ -64,6 +71,11 @@ public class ProfileSettingActivity extends BaseActivity implements
 		if (DataCenter.mDuoDuoUser != null) {
 			nickNameText.setText(DataCenter.mDuoDuoUser.realName);
 			genderText.setText(DataCenter.mDuoDuoUser.gender);
+			
+			
+//			Drawable mDrawable = getResources().getDrawable(R.drawable.head_default_big);
+//			BitmapDrawable mBitmap = (BitmapDrawable)mDrawable;
+//			mHeadviewPic.setRoundImage(mBitmap.getBitmap());
 		}
 	}
 	
