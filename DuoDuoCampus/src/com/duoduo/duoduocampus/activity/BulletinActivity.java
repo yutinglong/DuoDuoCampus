@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 
 import com.duoduo.duoduocampus.R;
 import com.duoduo.duoduocampus.adapter.NewsListAdapter;
@@ -34,7 +36,8 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
  * @version: 1.0.0
  * @created：2015年7月23日
  */
-public class BulletinActivity extends BaseActivity implements OnClickListener, OnRefreshListener , OnLoadMoreListener{
+public class BulletinActivity extends BaseActivity implements OnClickListener, OnRefreshListener , OnLoadMoreListener, 
+			AdapterView.OnItemClickListener{
 	private static final int DEFAULT_PAGE_SIZE = 30;
 	
 	private PullRefreshListView mPullRefreshListView;
@@ -97,6 +100,8 @@ public class BulletinActivity extends BaseActivity implements OnClickListener, O
 		LayoutInflater inflater = LayoutInflater.from(this); 
         View tempView = inflater.inflate(R.layout.empty_textview, null);
         mPullRefreshListView.setEmptyView(tempView);
+        
+        mPullRefreshListView.setOnItemClickListener(this);
 	}
 
 	private int count = 0;
@@ -209,5 +214,19 @@ public class BulletinActivity extends BaseActivity implements OnClickListener, O
 		}
 		
 		getNewsData(mNewsState.offset, DEFAULT_PAGE_SIZE);
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		if (mPullRefreshListView != null && mPullRefreshListView.getRefreshableView() != null) {
+    		position = position - mPullRefreshListView.getRefreshableView().getHeaderViewsCount();
+    	}
+        if (mAdapter.getCount() > position && position > -1) {
+        	News item = (News) mAdapter.getItem(position);
+        	Intent mIntent = new Intent(this, NewsDetailActivity.class);
+        	mIntent.putExtra("currentNews", item);
+        	startActivity(mIntent);
+        }
 	}
 }

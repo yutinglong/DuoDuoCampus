@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/header"
+        style="@style/mainHeader" >
+
+        <TextView
+            android:id="@+id/back"
+            style="@style/TopBackBtn"
+            android:layout_centerVertical="true" />
+
+        <ImageView
+            android:id="@+id/news_detail_share"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/share_community" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/about_view"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@id/header" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/about_view"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/news_detail_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="宪法草案遭否致泰大选再延后"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/news_detail_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="8dp"
+                android:text="09-07 13:05"
+                android:textColor="@color/grey_d6"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/news_detail_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="12dp"
+                android:text="冒充公检法实施诈骗这是老骗局了，但骗子稍微加一点新花样进去，照样有人上当。南京一市民最近收到一份假的逮捕通知书，结果借了44万元汇到了所谓的“安全账户”；而另一位市民则看到了一个“最高检察院网站”，被骗两万多元。南京秦淮警方提醒广大市民，遭遇所谓公检法机关的电话、短信，第一时间拨打“110”电话核实，就能避免上当。南京秦虹派出所接到报警后，立即派民警赶到现场。民警告诉她，这是典型的诈骗。骗子之所以要她不要告诉别人并呆在银行，就是怕李女士立即报警。经过银行查询，在李女士等待电话的两个小时内，她汇出的钱早已被人转走。"
+                android:textColor="@color/black_t70"
+                android:lineSpacingExtra="5dp"
+                android:textSize="17sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

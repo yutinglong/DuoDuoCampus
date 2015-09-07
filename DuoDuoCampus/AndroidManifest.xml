@@ -40,6 +40,7 @@
         <activity android:name=".activity.ParentSentrustsActivity" />
         <activity android:name=".activity.StudentAppraisalsActivity" />
         <activity android:name=".activity.ExamResultsActivity" />
+        <activity android:name=".activity.NewsDetailActivity" />
         
         <meta-data
             android:name="logger"

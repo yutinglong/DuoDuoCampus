@@ -1,9 +1,10 @@
 package com.duoduo.duoduocampus.model;
 
+import java.io.Serializable;
+
 import com.google.gson.annotations.SerializedName;
 
-
-public class News {
+public class News implements Serializable {
 	@SerializedName("newId")
 	public String newId;
 	
@@ -24,4 +25,7 @@ public class News {
 	
 	@SerializedName("imgUrl")
 	public String imgUrl;
+	
+	@SerializedName("newDetailContent")
+	public String newDetailContent;
 }
