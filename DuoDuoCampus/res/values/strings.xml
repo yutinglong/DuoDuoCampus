@@ -19,6 +19,7 @@
     <string name="study_courses">课程</string>
     <string name="study_homeworks">作业</string>
     
+    <string name="sync_btn_cancle">取消</string>
     <!-- 关于 -->
     <string name="setting_about_copyright_part1">牛多多网络科技有限公司  版权所有</string>
     <string name="setting_about_copyright_part2">Copyright © 2015 duoduo.com</string>

@@ -11,6 +11,14 @@ import com.duoduo.duoduocampus.R;
 import com.duoduo.duoduocampus.model.News;
 import com.duoduo.duoduocampus.utils.DToast;
 
+/**
+ * @description: 新闻、公告详情页
+ * @company: 多多校园
+ * @author yutinglong
+ * @version 1.0
+ * @created 2015-9-7 上午9:20:37
+ * @changeRecord
+ */
 public class NewsDetailActivity extends BaseActivity implements OnClickListener {
 	private View back;
 	

@@ -102,6 +102,8 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 	private SmoothScrollRunnable mCurrentSmoothScrollRunnable;
 	
 	private long refreshTime;
+	
+	private boolean disAllowTouchEnvent = false;
 
 	// ===========================================================
 	// Constructors
@@ -197,6 +199,10 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 	public final State getState() {
 		return mState;
 	}
+	
+	public void disAllowTouchEvent(boolean disAllowTouchEvent) {
+		this.disAllowTouchEnvent = disAllowTouchEvent;
+	}
 
 	/**
 	 * @deprecated See {@link #isScrollingWhileRefreshingEnabled()}.
@@ -228,7 +234,10 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 
 	@Override
 	public final boolean onInterceptTouchEvent(MotionEvent event) {
-
+		if (disAllowTouchEnvent) {
+			return super.onInterceptTouchEvent(event);
+		}
+		
 		if (!isPullToRefreshEnabled()) {
 			return false;
 		}

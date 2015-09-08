@@ -5,14 +5,12 @@ import java.util.List;
 
 import org.apache.http.NameValuePair;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 
 import com.duoduo.duoduocampus.R;
 import com.duoduo.duoduocampus.adapter.NewsListAdapter;
@@ -23,6 +21,7 @@ import com.duoduo.duoduocampus.model.net.NewModel;
 import com.duoduo.duoduocampus.msg.Messenger;
 import com.duoduo.duoduocampus.system.status.NetStatusReceiver;
 import com.duoduo.duoduocampus.utils.LogUtil;
+import com.duoduo.duoduocampus.web.DuoduoWebHelper;
 import com.handmark.pulltorefresh.library.PullRefreshListView;
 import com.handmark.pulltorefresh.library.PullRefreshListView.OnLoadMoreListener;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -224,9 +223,14 @@ public class BulletinActivity extends BaseActivity implements OnClickListener, O
     	}
         if (mAdapter.getCount() > position && position > -1) {
         	News item = (News) mAdapter.getItem(position);
-        	Intent mIntent = new Intent(this, NewsDetailActivity.class);
-        	mIntent.putExtra("currentNews", item);
-        	startActivity(mIntent);
+        	
+        	// 本地详情页
+//        	Intent mIntent = new Intent(this, NewsDetailActivity.class);
+//        	mIntent.putExtra("currentNews", item);
+//        	startActivity(mIntent);
+        	
+        	
+        	DuoduoWebHelper.openByUri(BulletinActivity.this, item.url);
         }
 	}
 }

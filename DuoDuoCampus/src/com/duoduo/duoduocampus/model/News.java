@@ -28,4 +28,7 @@ public class News implements Serializable {
 	
 	@SerializedName("newDetailContent")
 	public String newDetailContent;
+	
+	@SerializedName("url")
+	public String url;
 }
