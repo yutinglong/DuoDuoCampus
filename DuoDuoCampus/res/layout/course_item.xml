@@ -8,8 +8,8 @@
         android:id="@+id/center_layout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:padding="5dp" >
+        android:padding="5dp"
+        android:layout_centerVertical="true" >
 
         <TextView
             android:id="@+id/new_title"
@@ -19,36 +19,51 @@
             android:gravity="top"
             android:maxWidth="120dip"
             android:singleLine="true"
-            android:text="标题"
+            android:text="语文"
             android:textColor="@color/grey_d1"
             android:textSize="16sp" />
-
+        
+        
         <TextView
-            android:id="@+id/home_work_content"
+            android:id="@+id/data_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/new_title"
-            android:layout_marginLeft="0dip"
             android:layout_marginRight="10dip"
             android:layout_marginTop="10dp"
-            android:gravity="bottom"
-            android:maxLines="3"
-            android:text="内容"
-            android:textColor="@color/grey_d3"
+            android:gravity="top"
+            android:text="该课程主要针对小学学生学校语文的作文进行指导，展示优选的作文范文"
+            android:textColor="@color/grey_d5"
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/datatime"
+            android:id="@+id/data_classhour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/data_content"
             android:layout_alignParentRight="true"
-            android:layout_below="@id/home_work_content"
             android:layout_marginRight="10dip"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:gravity="top"
-            android:text="时间"
+            android:text="星期三"
             android:textColor="@color/grey_d5"
             android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/datateacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/data_content"
+            android:layout_marginLeft="0dip"
+            android:layout_marginRight="15dip"
+            android:layout_marginTop="10dp"
+            android:gravity="bottom"
+            android:singleLine="true"
+            android:text="教师：王秀杰"
+            android:textColor="@color/grey_d5"
+            android:textSize="14sp" />
+        
+        
     </RelativeLayout>
 
     <View

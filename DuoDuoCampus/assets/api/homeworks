@@ -1,0 +1,29 @@
+{
+	"items" : [
+		{
+			"workId" : 1,
+			"createDate" : "2015-08-14T14:58:08.000",
+			"course" : {
+				"couId" : 1,
+				"couName" : "语文"
+			},
+			"workContent" : "写一个关于父亲的作文，500字以上，请多使用今天做学的语法知识。",
+			"workAnalysis" : "重点是使用今天教的排比手法。",
+			"workComment" : "写的还不错，结尾出请多使用排比方式。"
+		},
+		{
+			"workId" : 2,
+			"createDate" : "2015-09-01T13:04:47.000",
+			"course" : {
+				"couId" : 3,
+				"couName" : "数学"
+			},
+			"workContent" : "计算地球自转五十圈之后，地球的周长。",
+			"workAnalysis" : "重点是自转之后，半径、周长等的变化。",
+			"workComment" : "不对，完全不对，自转几百圈半径、周长也会变化啊,0分。"
+		}
+	],
+	"hasMore" : false,
+	"limit" : 0,
+	"offset" : 0
+}

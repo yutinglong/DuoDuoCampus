@@ -3,14 +3,17 @@ package com.duoduo.duoduocampus.study;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.duoduo.duoduocampus.BaseFragment;
 import com.duoduo.duoduocampus.R;
+import com.duoduo.duoduocampus.activity.HomeWorkDetailActivity;
 import com.duoduo.duoduocampus.adapter.HomeWorkAdapter;
 import com.duoduo.duoduocampus.api.BaseAPI;
 import com.duoduo.duoduocampus.model.HomeWork;
@@ -20,7 +23,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
-public class HomeWorkFragment extends BaseFragment implements OnClickListener, OnRefreshListener {
+public class HomeWorkFragment extends BaseFragment implements OnClickListener, OnRefreshListener, AdapterView.OnItemClickListener {
 	private PullToRefreshListView mPullRefreshListView;
 	private HomeWorkAdapter mAdapter;
 	private List<HomeWork> dataList = new ArrayList<HomeWork>();
@@ -51,6 +54,8 @@ public class HomeWorkFragment extends BaseFragment implements OnClickListener, O
 		mAdapter = new HomeWorkAdapter(getActivity(), dataList); 
 		mPullRefreshListView.setAdapter(mAdapter);
 		mPullRefreshListView.setOnRefreshListener(this);
+		
+		mPullRefreshListView.setOnItemClickListener(this);
 	}
 
 	@Override
@@ -103,5 +108,21 @@ public class HomeWorkFragment extends BaseFragment implements OnClickListener, O
 	@Override
 	public void onRefresh(PullToRefreshBase refreshView) {
 		getHomeWorksData();		
+	}
+	
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		if (mPullRefreshListView != null && mPullRefreshListView.getRefreshableView() != null) {
+    		position = position - mPullRefreshListView.getRefreshableView().getHeaderViewsCount();
+    	}
+        if (mAdapter.getCount() > position && position > -1) {
+        	HomeWork mHomeWork = (HomeWork) mAdapter.getItem(position);
+        	
+        	// 本地详情页
+        	Intent mIntent = new Intent(this.getActivity(), HomeWorkDetailActivity.class);
+        	mIntent.putExtra("currentHomeWork", mHomeWork);
+        	startActivity(mIntent);
+        }
 	}
 }

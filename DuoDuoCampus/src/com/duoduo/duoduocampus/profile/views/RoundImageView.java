@@ -29,7 +29,7 @@ import com.squareup.picasso.Transformation;
  * @title: RoundImageView.java
  * @description:
  * @company: 多多校园
- * @author tinglongyu
+ * @author: tinglongyu
  * @version: 1.0.0
  * @created：2015年7月23日
  */

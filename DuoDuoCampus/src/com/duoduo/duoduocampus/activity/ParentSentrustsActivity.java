@@ -23,7 +23,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
  * @title: ParentSentrustsActivity.java
  * @description: 家长嘱托
  * @company: 多多校园
- * @author tinglongyu
+ * @author: tinglongyu
  * @version: 1.0.0
  * @created：2015年7月23日
  */

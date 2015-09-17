@@ -24,7 +24,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
  * @title: CoursesFragment.java
  * @description: 课程信息
  * @company: 多多校园
- * @author tinglongyu
+ * @author: tinglongyu
  * @version: 1.0.0
  * @created：2015年9月2日
  */

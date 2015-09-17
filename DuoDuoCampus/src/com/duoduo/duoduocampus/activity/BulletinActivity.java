@@ -31,7 +31,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
  * @title: BulletinActivity.java
  * @description: 校园公告
  * @company: 多多校园
- * @author tinglongyu
+ * @author: tinglongyu
  * @version: 1.0.0
  * @created：2015年7月23日
  */

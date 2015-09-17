@@ -12,8 +12,6 @@ import android.widget.TextView;
 
 import com.duoduo.duoduocampus.R;
 import com.duoduo.duoduocampus.model.HomeWork;
-import com.duoduo.duoduocampus.model.News;
-import com.duoduo.duoduocampus.model.TeachPlan;
 
 public class HomeWorkAdapter extends BaseAdapter {
 	private LayoutInflater mInflater = null;
@@ -31,7 +29,7 @@ public class HomeWorkAdapter extends BaseAdapter {
 
 	@Override
 	public Object getItem(int position) {
-		return position;
+		return data.get(position);
 	}
 
 	@Override
@@ -44,18 +42,22 @@ public class HomeWorkAdapter extends BaseAdapter {
 		ViewHolder holder = null;
 		if (convertView == null) {
 			holder = new ViewHolder();
-			convertView = mInflater.inflate(R.layout.teach_plan_item, null);
+			convertView = mInflater.inflate(R.layout.home_work_item, null);
+			
 			holder.title = (TextView) convertView.findViewById(R.id.new_title);
-			holder.datatime = (TextView) convertView
-					.findViewById(R.id.datatime);
-			holder.content = (TextView) convertView.findViewById(R.id.content);
+			holder.content = (TextView) convertView.findViewById(R.id.home_work_content);
+			holder.datatime = (TextView) convertView.findViewById(R.id.datatime);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		holder.title.setText((String) data.get(position).workComment);
-		holder.content.setText((String) data.get(position).workContent);
-		holder.datatime.setText((String) data.get(position).createDate.substring(0, 10));
+		
+		HomeWork mHomeWork = data.get(position);
+		if (mHomeWork != null) {
+			holder.title.setText((String) mHomeWork.course.couName);
+			holder.content.setText((String) mHomeWork.workContent);
+			holder.datatime.setText("作业日期: " + mHomeWork.createDate.substring(0, 10));
+		}
 
 		return convertView;
 	}
@@ -66,5 +68,4 @@ public class HomeWorkAdapter extends BaseAdapter {
 		public TextView datatime;
 		public TextView content;
 	}
-
 }
