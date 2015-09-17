@@ -11,16 +11,17 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.duoduo.duoduocampus.R;
-import com.duoduo.duoduocampus.model.News;
 import com.duoduo.duoduocampus.model.TeachPlan;
 
 public class TeachPlanAdapter extends BaseAdapter {
 	private LayoutInflater mInflater = null;
 	private List<TeachPlan> data = new ArrayList<TeachPlan>();
+	private Context mContext;
 
 	public TeachPlanAdapter(Context context, List<TeachPlan> dataList) {
 		this.mInflater = LayoutInflater.from(context);
 		this.data = dataList;
+		mContext = context;
 	}
 
 	@Override
@@ -45,16 +46,37 @@ public class TeachPlanAdapter extends BaseAdapter {
 			holder = new ViewHolder();
 			convertView = mInflater.inflate(R.layout.teach_plan_item, null);
 			holder.title = (TextView) convertView.findViewById(R.id.new_title);
-			holder.datatime = (TextView) convertView
-					.findViewById(R.id.datatime);
-			holder.content = (TextView) convertView.findViewById(R.id.content);
+			holder.plan_status = (TextView) convertView
+					.findViewById(R.id.plan_status);
+			holder.data_content = (TextView) convertView.findViewById(R.id.data_content);
+			holder.data_classhour = (TextView) convertView.findViewById(R.id.data_classhour);
+			holder.datateacher = (TextView) convertView.findViewById(R.id.datateacher);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		holder.title.setText((String) data.get(position).tpContent);
-		holder.content.setText("课时: " + (String) data.get(position).classHour);
-		holder.datatime.setText("状态: " + (String) data.get(position).tpStatus);
+		
+		TeachPlan mTeachPlan = data.get(position);
+		
+		if (mTeachPlan != null) {
+			if (mTeachPlan.course != null && mTeachPlan.course.couName != null) {
+				holder.title.setText((String) data.get(position).course.couName);
+			}
+			
+			if (mTeachPlan.getStatusStr() != null) {
+				holder.plan_status.setText("(" + data.get(position).getStatusStr() + ")");
+				if (mTeachPlan.getStatusStr().equals("已停课")) {
+					holder.plan_status.setTextColor(mContext.getResources().getColor(R.color.red));
+				}
+				else {
+					holder.plan_status.setTextColor(mContext.getResources().getColor(R.color.grey_d1));
+				}
+			}
+			
+			holder.data_content.setText((String) data.get(position).tpContent);
+			holder.data_classhour.setText("共 " + (String) data.get(position).classHour + " 课时");
+			holder.datateacher.setText("教师：" + data.get(position).teacher.teaName);
+		}
 
 		return convertView;
 	}
@@ -62,8 +84,10 @@ public class TeachPlanAdapter extends BaseAdapter {
 	// ViewHolder静态类
 	static class ViewHolder {
 		public TextView title;
-		public TextView datatime;
-		public TextView content;
+		public TextView plan_status;
+		public TextView data_content;
+		public TextView data_classhour;
+		public TextView datateacher;
 	}
 
 }

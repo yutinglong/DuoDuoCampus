@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="55dp"
+    android:layout_height="wrap_content"
     android:background="@color/white" >
 
     <RelativeLayout
@@ -19,12 +19,26 @@
             android:gravity="top"
             android:maxWidth="120dip"
             android:singleLine="true"
-            android:text="标题"
-            android:textColor="@color/red"
+            android:text="语文"
+            android:textColor="@color/grey_d1"
             android:textSize="16sp" />
-
+        
+  		<TextView
+            android:id="@+id/plan_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/new_title"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentTop="true"
+            android:gravity="top"
+            android:maxWidth="120dip"
+            android:singleLine="true"
+            android:text="(已开课)"
+            android:textColor="@color/grey_d1"
+            android:textSize="16sp" />
+        
         <TextView
-            android:id="@+id/datatime"
+            android:id="@+id/data_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/new_title"
@@ -32,22 +46,35 @@
             android:layout_marginRight="10dip"
             android:layout_marginTop="10dp"
             android:gravity="top"
-            android:text="时间"
+            android:text="该课程主要针对小学学生学校语文的作文进行指导，展示优选的作文范文"
+            android:textColor="@color/grey_d5"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/data_classhour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/data_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dip"
+            android:layout_marginTop="10dp"
+            android:gravity="top"
+            android:text="12 课时"
             android:textColor="@color/grey_d5"
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/content"
+            android:id="@+id/datateacher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/new_title"
+            android:layout_below="@id/data_content"
             android:layout_marginLeft="0dip"
             android:layout_marginRight="15dip"
             android:layout_marginTop="10dp"
             android:gravity="bottom"
             android:singleLine="true"
-            android:text="内容"
-            android:textColor="@color/grey_d3"
+            android:text="教师：王秀杰"
+            android:textColor="@color/grey_d5"
             android:textSize="14sp" />
         
         

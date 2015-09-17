@@ -24,4 +24,15 @@ public class TeachPlan {
 	
 	@SerializedName("tpStatus")
 	public String tpStatus;
+	
+	public String getStatusStr() {
+		String result = "未知";
+		if ("1".equals(tpStatus)) {
+			result = "已开课";
+		}
+		else if ("2".equals(tpStatus)) {
+			result = "已停课";
+		}
+		return result;
+	}
 }

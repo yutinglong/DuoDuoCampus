@@ -53,9 +53,11 @@ public class CourseAdapter extends BaseAdapter {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		holder.title.setText((String) data.get(position).couDesc);
-		holder.content.setText((String) data.get(position).couId);
-		holder.datatime.setText((String) data.get(position).couName);
+		if (data.get(position) != null) {
+//			holder.title.setText((String) data.get(position).couDesc);
+//			holder.content.setText((String) data.get(position).couId);
+//			holder.datatime.setText((String) data.get(position).couName);
+		}
 
 		return convertView;
 	}

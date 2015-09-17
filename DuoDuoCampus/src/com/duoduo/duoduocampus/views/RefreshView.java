@@ -16,7 +16,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
  * @company: 美丽说（北京）网络科技有限公司
  * @author wanyuyong
  * @version 4.0
- * @created Aug 30, 2013 重构于2015-5-20 by 于庭龙
+ * @created Aug 30, 2013 重构于2015-5-20 by tinglongyu
  */
 public class RefreshView extends PullToRefreshBase<LinearLayout> {
 	private View slidablyView = null;

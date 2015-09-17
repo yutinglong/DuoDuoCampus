@@ -15,7 +15,7 @@ import com.handmark.pulltorefresh.library.R;
  * @title: MLSTweenAnimLoadingLayout.java
  * @description: 下拉刷新动画封装
  * @company: 美丽说（北京）网络科技有限公司
- * @author: 于庭龙
+ * @author tinglongyu
  * @version: 7.1.0
  * @created：2015年8月24日
  */

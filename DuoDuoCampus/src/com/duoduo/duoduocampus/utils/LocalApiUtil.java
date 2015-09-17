@@ -10,7 +10,7 @@ import android.text.TextUtils;
 import com.duoduo.duoduocampus.BaseApplication;
 
 /**
- * @author 于庭龙 本地测试数据工具类 本地接口文件存放位置：assets 本地接口文件命名规则url.replace("/", "_")
+ * @author tinglongyu 本地测试数据工具类 本地接口文件存放位置：assets 本地接口文件命名规则url.replace("/", "_")
  */
 public class LocalApiUtil {
 

@@ -1,0 +1,100 @@
+{
+	"items" : [
+		{
+			"tpId" : 1,
+			"course" : {
+				"couId" : 1,
+				"couName" : "小学语文"
+			},
+			"teacher" : {
+				"teaId" : 1,
+				"teaName" : 于雪娇,
+				"teaSchool" : {
+					"schID" : 0
+				}
+			},
+			"classInfo" : {
+				"classInfoId" : 1,
+				"grade" : 0,
+				"school" : {
+					"schID" : 0
+				},
+				"teacher" : {
+					"teaId" : 0,
+					"teaName" : 李岚,
+					"teaSchool" : {
+						"schID" : 0
+					}
+				}
+			},
+			"tpContent" : "该课程主要针对小学学生学校语文的作文进行指导，展示优选的作文范文。",
+			"classHour" : 24,
+			"tpStatus" : 1
+		},
+		{
+			"tpId" : 2,
+			"course" : {
+				"couId" : 1,
+				"couName" : "英语"
+			},
+			"teacher" : {
+				"teaId" : 1,
+				"teaName" : "王宇英",
+				"teaSchool" : {
+					"schID" : 0
+				}
+			},
+			"classInfo" : {
+				"classInfoId" : 1,
+				"grade" : 0,
+				"school" : {
+					"schID" : 0
+				},
+				"teacher" : {
+					"teaId" : 0,
+					"teaName" : "李岚",
+					"teaSchool" : {
+						"schID" : 0
+					}
+				}
+			},
+			"tpContent" : "该课程是中小学全科个性化互联网学习平台，针对学生在英语学习中的重点难点，提供个性化的学习方案。",
+			"classHour" : 48,
+			"tpStatus" : 1
+		},
+		{
+			"tpId" : 3,
+			"course" : {
+				"couId" : 1,
+				"couName" : "地理"
+			},
+			"teacher" : {
+				"teaId" : 1,
+				"teaName" : "吴国峰",
+				"teaSchool" : {
+					"schID" : 0
+				}
+			},
+			"classInfo" : {
+				"classInfoId" : 2,
+				"grade" : 0,
+				"school" : {
+					"schID" : 0
+				},
+				"teacher" : {
+					"teaId" : 0,
+					"teaName" : "李岚",
+					"teaSchool" : {
+						"schID" : 0
+					}
+				}
+			},
+			"tpContent" : "该课程主要指导中学地理相关知识，提高学生对地理的热情并快速提高考试成绩。",
+			"classHour" : 12,
+			"tpStatus" : 2
+		}
+	],
+	"hasMore" : false,
+	"limit" : 0,
+	"offset" : 0
+}

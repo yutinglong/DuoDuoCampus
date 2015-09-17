@@ -15,7 +15,7 @@ import android.view.Window;
  * @title: MainActivity.java
  * @description:
  * @company: 多多校园
- * @author: 于庭龙
+ * @author tinglongyu
  * @version: 1.0.0
  * @created：2015年7月13日
  */

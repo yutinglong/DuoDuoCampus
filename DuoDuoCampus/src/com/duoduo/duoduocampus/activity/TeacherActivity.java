@@ -23,7 +23,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
  * @title: TeacherActivity.java
  * @description: 教师
  * @company: 多多校园
- * @author: 于庭龙
+ * @author tinglongyu
  * @version: 1.0.0
  * @created：2015年7月23日
  */
