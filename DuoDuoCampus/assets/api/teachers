@@ -1,0 +1,43 @@
+{
+	"items" : [
+		{
+			"teaId" : 1,
+			"teaName" : "王世充",
+			"teaSchool" : {
+				"schID" : 1
+			},
+			"username" : "admin",
+			"gender" : "男",
+			"education" : "0",
+			"dgree" : "本科",
+			"title" : "高级教师"
+		},
+		{
+			"teaId" : 2,
+			"teaName" : "李王雪",
+			"teaSchool" : {
+				"schID" : 1
+			},
+			"username" : "admin",
+			"gender" : "女",
+			"education" : "0",
+			"dgree" : "博士",
+			"title" : "普通教师"
+		},
+		{
+			"teaId" : 3,
+			"teaName" : "高晓娇",
+			"teaSchool" : {
+				"schID" : 1
+			},
+			"username" : "admin",
+			"gender" : "女",
+			"education" : "0",
+			"dgree" : "博士",
+			"title" : "高级教师"
+		}
+	],
+	"hasMore" : false,
+	"limit" : 0,
+	"offset" : 0
+}

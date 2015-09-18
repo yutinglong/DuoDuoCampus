@@ -43,25 +43,30 @@ public class TeachersAdapter extends BaseAdapter {
 		if (convertView == null) {
 			holder = new ViewHolder();
 			convertView = mInflater.inflate(R.layout.teacher_item, null);
-			holder.title = (TextView) convertView.findViewById(R.id.new_title);
-			holder.datatime = (TextView) convertView
-					.findViewById(R.id.datatime);
+			holder.username = (TextView) convertView.findViewById(R.id.username);
+			holder.gender = (TextView) convertView
+					.findViewById(R.id.gender);
 			holder.content = (TextView) convertView.findViewById(R.id.content);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		holder.title.setText((String) data.get(position).username);
-//		holder.datatime.setText((String) data.get(position).newDate.substring(0, 10));
-//		holder.content.setText((String) data.get(position).newContent);
+		
+		Teacher mTeacher = data.get(position);
+		
+		if (mTeacher != null) {
+			holder.username.setText((String) mTeacher.teaName);
+			holder.gender.setText("(" + mTeacher.gender + ")");
+			holder.content.setText(mTeacher.title);
+		}
 
 		return convertView;
 	}
 
 	// ViewHolder静态类
 	static class ViewHolder {
-		public TextView title;
-		public TextView datatime;
+		public TextView username;
+		public TextView gender;
 		public TextView content;
 	}
 
